@@ -19,5 +19,5 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    testRunTitle: 'Unit Tests'
+    displayName: 'Run Unit Tests'
 
