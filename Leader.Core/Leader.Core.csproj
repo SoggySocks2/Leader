@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>Smeat.Leader.Core</AssemblyName>
+    <RootNamespace>Smeat.Leader.Core</RootNamespace>
+  </PropertyGroup>
+
+</Project>
