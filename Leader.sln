@@ -7,22 +7,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{94CBF366-12D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leader.Web", "Leader.Web\Leader.Web.csproj", "{44666066-5380-4299-9E91-F45EF0700D2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leader.Infrastructure", "Leader.Infrastructure\Leader.Infrastructure.csproj", "{D36A611B-7488-49FB-AA79-82DDFE73AA84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leader.Infrastructure", "Leader.Infrastructure\Leader.Infrastructure.csproj", "{D36A611B-7488-49FB-AA79-82DDFE73AA84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leader.Core", "Leader.Core\Leader.Core.csproj", "{08580CBD-E6D6-4491-ADEA-17962B0A14AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leader.Core", "Leader.Core\Leader.Core.csproj", "{08580CBD-E6D6-4491-ADEA-17962B0A14AA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{6CF18ECF-7435-4447-94A2-7862F7735A50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leader.UnitTests", "Leader.UnitTests\Leader.UnitTests.csproj", "{53C42C18-590A-4F3F-A06D-EA6D2A3A9CB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leader.UnitTests", "Leader.UnitTests\Leader.UnitTests.csproj", "{53C42C18-590A-4F3F-A06D-EA6D2A3A9CB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leader.IntegrationTests", "Leader.IntegrationTests\Leader.IntegrationTests.csproj", "{EDF153E7-D299-45F3-88EC-18BCA5D94F6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leader.IntegrationTests", "Leader.IntegrationTests\Leader.IntegrationTests.csproj", "{EDF153E7-D299-45F3-88EC-18BCA5D94F6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leader.FunctionalTests", "Leader.FunctionalTests\Leader.FunctionalTests.csproj", "{1B2ECBAD-35C6-41C9-8877-2A67B0358E9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leader.FunctionalTests", "Leader.FunctionalTests\Leader.FunctionalTests.csproj", "{1B2ECBAD-35C6-41C9-8877-2A67B0358E9A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{168B434B-385F-4FE8-A721-87B9165709C7}"
 	ProjectSection(SolutionItems) = preProject
-		azure-pipelines.yml = azure-pipelines.yml
 		README.md = README.md
+		SoggySocks2.Leader.Web.yml = SoggySocks2.Leader.Web.yml
 	EndProjectSection
 EndProject
 Global
