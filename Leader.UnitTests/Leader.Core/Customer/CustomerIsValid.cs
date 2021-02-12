@@ -10,7 +10,7 @@ namespace Smeat.Leader.UnitTests.Leader.Core.Customer
             var customer = new Smeat.Leader.Core.Entities.CustomerAggregate.Customer();
             customer.FirstName = "Peter";
 
-            Assert.Equal("Peter", customer.FirstName);
+            Assert.Equal("Peterx", customer.FirstName);
         }
     }
 }
