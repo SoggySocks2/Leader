@@ -21,8 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leader.FunctionalTests", "L
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{168B434B-385F-4FE8-A721-87B9165709C7}"
 	ProjectSection(SolutionItems) = preProject
+		Leader.Web.yml = Leader.Web.yml
 		README.md = README.md
-		SoggySocks2.Leader.Web.yml = SoggySocks2.Leader.Web.yml
 	EndProjectSection
 EndProject
 Global
