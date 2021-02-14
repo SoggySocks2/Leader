@@ -1,11 +1,12 @@
-using Smeat.Leader.Web.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Smeat.Leader.Web.Areas.Identity.Entities;
+using Smeat.Leader.Infrastructure.Identity;
+using Smeat.Leader.Web.Configuration;
 
 namespace Smeat.Leader.Web
 {
@@ -21,10 +22,12 @@ namespace Smeat.Leader.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            /* Add LeaderUser identity and AuthDbContext */
             services.AddIdentity<LeaderUser, LeaderRole>(options =>
             {
                 options.User.RequireUniqueEmail = true;
-            }).AddEntityFrameworkStores<AuthDbContext>();
+            }).AddEntityFrameworkStores<AuthDbContext>()
+            .AddDefaultTokenProviders(); /* 2 factor authentication */
 
             services.AddDbContext<AuthDbContext>(options =>
             {
@@ -32,11 +35,14 @@ namespace Smeat.Leader.Web
             });
 
 
+            /* Add ApplicationDbContext */
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("Leader"));
             });
 
+            /* Add specific configuration classes */
+            services.AddCoreServices();
 
             services.AddDatabaseDeveloperPageExceptionFilter();
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)

@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Smeat.Leader.Web.Data;
+using Smeat.Leader.Infrastructure.Identity;
 
-namespace Smeat.Leader.Web.Migrations
+namespace Smeat.Leader.Infrastructure.Migrations
 {
     [DbContext(typeof(AuthDbContext))]
     partial class AuthDbContextModelSnapshot : ModelSnapshot
@@ -120,7 +120,7 @@ namespace Smeat.Leader.Web.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Smeat.Leader.Web.Areas.Identity.Entities.LeaderRole", b =>
+            modelBuilder.Entity("Smeat.Leader.Infrastructure.Identity.LeaderRole", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -149,7 +149,7 @@ namespace Smeat.Leader.Web.Migrations
                     b.ToTable("AspNetRoles");
                 });
 
-            modelBuilder.Entity("Smeat.Leader.Web.Areas.Identity.Entities.LeaderUser", b =>
+            modelBuilder.Entity("Smeat.Leader.Infrastructure.Identity.LeaderUser", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -224,7 +224,7 @@ namespace Smeat.Leader.Web.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<long>", b =>
                 {
-                    b.HasOne("Smeat.Leader.Web.Areas.Identity.Entities.LeaderRole", null)
+                    b.HasOne("Smeat.Leader.Infrastructure.Identity.LeaderRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -233,7 +233,7 @@ namespace Smeat.Leader.Web.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<long>", b =>
                 {
-                    b.HasOne("Smeat.Leader.Web.Areas.Identity.Entities.LeaderUser", null)
+                    b.HasOne("Smeat.Leader.Infrastructure.Identity.LeaderUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -242,7 +242,7 @@ namespace Smeat.Leader.Web.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<long>", b =>
                 {
-                    b.HasOne("Smeat.Leader.Web.Areas.Identity.Entities.LeaderUser", null)
+                    b.HasOne("Smeat.Leader.Infrastructure.Identity.LeaderUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -251,13 +251,13 @@ namespace Smeat.Leader.Web.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<long>", b =>
                 {
-                    b.HasOne("Smeat.Leader.Web.Areas.Identity.Entities.LeaderRole", null)
+                    b.HasOne("Smeat.Leader.Infrastructure.Identity.LeaderRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Smeat.Leader.Web.Areas.Identity.Entities.LeaderUser", null)
+                    b.HasOne("Smeat.Leader.Infrastructure.Identity.LeaderUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -266,7 +266,7 @@ namespace Smeat.Leader.Web.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<long>", b =>
                 {
-                    b.HasOne("Smeat.Leader.Web.Areas.Identity.Entities.LeaderUser", null)
+                    b.HasOne("Smeat.Leader.Infrastructure.Identity.LeaderUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

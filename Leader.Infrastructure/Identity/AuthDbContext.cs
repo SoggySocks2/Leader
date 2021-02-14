@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Smeat.Leader.Web.Areas.Identity.Entities;
 
-namespace Smeat.Leader.Web.Data
+namespace Smeat.Leader.Infrastructure.Identity
 {
     public class AuthDbContext : IdentityDbContext<LeaderUser, LeaderRole, long>
     {
-        public AuthDbContext(DbContextOptions<AuthDbContext> options) : base (options)
+        public AuthDbContext(DbContextOptions<AuthDbContext> options) : base(options)
         {
 
         }

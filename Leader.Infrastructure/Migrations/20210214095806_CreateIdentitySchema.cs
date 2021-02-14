@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Smeat.Leader.Web.Migrations
+namespace Smeat.Leader.Infrastructure.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {

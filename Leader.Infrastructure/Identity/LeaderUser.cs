@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace Smeat.Leader.Web.Areas.Identity.Entities
+namespace Smeat.Leader.Infrastructure.Identity
 {
     public class LeaderUser : IdentityUser<long>
     {
