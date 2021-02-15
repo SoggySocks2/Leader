@@ -1,12 +1,17 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using Smeat.Leader.Infrastructure.Identity;
 using Smeat.Leader.Web.Configuration;
+using System.Collections.Generic;
+using System.Globalization;
 
 namespace Smeat.Leader.Web
 {
@@ -47,7 +52,29 @@ namespace Smeat.Leader.Web
             services.AddDatabaseDeveloperPageExceptionFilter();
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             //    .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddRazorPages();
+
+
+            /* Globalization */
+            services.AddLocalization(options => { options.ResourcesPath = "Resources"; });
+
+            services.AddRazorPages()
+                .AddRazorRuntimeCompilation() /* Enable edit and continue */
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization(); /* Globalization */
+
+            services.Configure<RequestLocalizationOptions>(
+                options =>
+                {
+                    var supportedCultures = new List<CultureInfo>
+                    {
+                        new CultureInfo("en"),
+                        new CultureInfo("es"),
+                        new CultureInfo("fr")
+                    };
+                    options.DefaultRequestCulture = new RequestCulture("en");
+                    options.SupportedCultures = supportedCultures;
+                    options.SupportedUICultures = supportedCultures;
+                }
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -72,6 +99,9 @@ namespace Smeat.Leader.Web
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            /* Add Globalization to the pipleline */
+            app.UseRequestLocalization(app.ApplicationServices.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
 
             app.UseEndpoints(endpoints =>
             {

@@ -1,9 +1,16 @@
 ﻿@page
 @model IndexModel
+
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+
 @{
     ViewData["Title"] = "Home page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Smeat - Leader - Web</h1>
+
+    <h2>
+        @ViewData["Welcome"]
+    </h2>
 </div>
