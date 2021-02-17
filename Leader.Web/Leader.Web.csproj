@@ -21,4 +21,19 @@
     <ProjectReference Include="..\Leader.Infrastructure\Leader.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Areas\Identity\Pages\Account\Register.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Areas\Identity\Pages\Account\Register.fr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Areas\Identity\Pages\Account\RegisterModel.es.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Areas\Identity\Pages\Account\RegisterModel.fr.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>

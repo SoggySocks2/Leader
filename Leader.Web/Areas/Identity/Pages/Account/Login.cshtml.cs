@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Smeat.Leader.Infrastructure.Identity;
 
 namespace Smeat.Leader.Web.Areas.Identity.Pages.Account
 {
-
     public class LoginModel : PageModel
     {
         private readonly SignInManager<LeaderUser> _signInManager;
@@ -34,7 +34,7 @@ namespace Smeat.Leader.Web.Areas.Identity.Pages.Account
         {
             [Required]
             [EmailAddress]
-            public string Email { get; set; } = string.Empty;
+            public string Email { get; set; }
 
             [Required]
             [DataType(DataType.Password)]
@@ -90,11 +90,15 @@ namespace Smeat.Leader.Web.Areas.Identity.Pages.Account
                 //    _logger.LogWarning("User account locked out.");
                 //    return RedirectToPage("./Lockout");
                 //}
+                else if (result.IsNotAllowed)
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt. Please check your email and confirm your email address then try again.");
+                }
                 else
                 {
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return Page();
                 }
+                return Page();
             }
 
             // If we got this far, something failed, redisplay form

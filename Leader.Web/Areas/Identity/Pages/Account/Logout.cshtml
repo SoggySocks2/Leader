@@ -1,7 +1,11 @@
 ﻿@page
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
 @model Smeat.Leader.Web.Areas.Identity.Pages.Account.LogoutModel
 @{
-    ViewData["Title"] = "Logout";
+    ViewData["Title"] = localizer["Logout"];
 }
 
-<h2>@ViewData["Title"]</h2>
+<header>
+    <h1>@ViewData["Title"]</h1>
+    <p>@localizer["You have successfully logged out of the application."]</p>
+</header>
