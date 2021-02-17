@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Smeat.Leader.Infrastructure.Identity;
 using Smeat.Leader.Web.Configuration;
+using Smeat.Leader.Web.Services;
 using System.Collections.Generic;
 using System.Globalization;
 
@@ -57,6 +58,8 @@ namespace Smeat.Leader.Web
 
             /* Globalization */
             services.AddLocalization(options => { options.ResourcesPath = "Resources"; });
+
+            services.AddSingleton<CommonLocalizationService>();
 
             services.AddRazorPages()
                 .AddRazorRuntimeCompilation() /* Enable edit and continue */
