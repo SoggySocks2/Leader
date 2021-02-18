@@ -10,9 +10,11 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Smeat.Leader.Infrastructure.Identity;
 using Smeat.Leader.Web.Configuration;
+using Smeat.Leader.Web.Resources;
 using Smeat.Leader.Web.Services;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Reflection;
 
 namespace Smeat.Leader.Web
 {
@@ -63,7 +65,16 @@ namespace Smeat.Leader.Web
 
             services.AddRazorPages()
                 .AddRazorRuntimeCompilation() /* Enable edit and continue */
-                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization(); /* Globalization */
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                //.AddDataAnnotationsLocalization(); /* Globalization */
+                .AddDataAnnotationsLocalization(options => /* Globalization */
+                {
+                    options.DataAnnotationLocalizerProvider = (type, factory) =>
+                    {
+                        var assemblyName = new AssemblyName(typeof(CommonResources).GetTypeInfo().Assembly.FullName);
+                        return factory.Create(nameof(CommonResources), assemblyName.Name);
+                    };
+                });
 
             services.Configure<RequestLocalizationOptions>(options =>
             {

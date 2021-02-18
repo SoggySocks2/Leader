@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Smeat.Leader.Infrastructure.Identity;
 
@@ -11,12 +12,14 @@ namespace Smeat.Leader.Web.Areas.Identity.Pages.Account
     public class ProfileModel : PageModel
     {
         private readonly UserManager<LeaderUser> _userManager;
-        private readonly ILogger<LoginModel> _logger;
+        private readonly ILogger<ProfileModel> _logger;
+        private readonly IStringLocalizer<ProfileModel> _stringLocalizer;
 
-        public ProfileModel(UserManager<LeaderUser> userManager, ILogger<LoginModel> logger)
+        public ProfileModel(UserManager<LeaderUser> userManager, ILogger<ProfileModel> logger, IStringLocalizer<ProfileModel> localizer)
         {
             _userManager = userManager;
             _logger = logger;
+            _stringLocalizer = localizer;
         }
 
         [BindProperty]
@@ -24,27 +27,33 @@ namespace Smeat.Leader.Web.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
             [EmailAddress]
+            [Display(Name = "Email")]
             public string Email { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "{0} is required")]
+            [StringLength(100)]
+            [DataType(DataType.Text)]
             [Display(Name = "First name")]
-            public string Firstname { get; set; }
+            public string FirstName { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "{0} is required")]
+            [StringLength(100)]
+            [DataType(DataType.Text)]
             [Display(Name = "Last name")]
-            public string Lastname { get; set; }
+            public string LastName { get; set; }
         }
 
         public async Task OnGet()
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
 
-            Input = new InputModel();
-            Input.Email = user.Email;
-            Input.Firstname = user.FirstName;
-            Input.Lastname = user.LastName;
+            Input = new InputModel
+            {
+                Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName
+            };
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -52,19 +61,19 @@ namespace Smeat.Leader.Web.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = await _userManager.GetUserAsync(HttpContext.User);
-                user.FirstName = Input.Firstname;
-                user.LastName = Input.Lastname;
+                user.FirstName = Input.FirstName;
+                user.LastName = Input.LastName;
                 var result = await _userManager.UpdateAsync(user);
 
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    ViewData["Message"] = "Update succeeded";
+                    ViewData["Message"] = _stringLocalizer["Update succeeded"];
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Failed to update user.");
-                    ViewData["Message"] = "Failed to update user.";
+                    ModelState.AddModelError(string.Empty, _stringLocalizer["Failed to update user."]);
+                    ViewData["Message"] = _stringLocalizer["Failed to update user."];
                 }
             }
 

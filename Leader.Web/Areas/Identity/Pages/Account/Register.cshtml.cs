@@ -13,7 +13,6 @@ namespace Smeat.Leader.Web.Areas.Identity.Pages.Account
 {
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<LeaderUser> _signInManager;
         private readonly UserManager<LeaderUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
@@ -21,14 +20,12 @@ namespace Smeat.Leader.Web.Areas.Identity.Pages.Account
 
         public RegisterModel(
             UserManager<LeaderUser> userManager,
-            SignInManager<LeaderUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
             IStringLocalizer<RegisterModel> localizer
             )
         {
             _userManager = userManager;
-            _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
             _stringLocalizer = localizer;
@@ -41,32 +38,34 @@ namespace Smeat.Leader.Web.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
+            [Required(ErrorMessage = "{0} is required")]
+            [StringLength(100)]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
-            [Required]
-            [StringLength(100, ErrorMessage = "{0} is required.")]
+            [Required(ErrorMessage = "{0} is required")]
+            [StringLength(100)]
             [DataType(DataType.Text)]
             [Display(Name = "First name")]
             public string FirstName { get; set; }
 
-            [Required]
-            [StringLength(100, ErrorMessage = "{0} is required.")]
+            [Required (ErrorMessage = "{0} is required")]
+            [StringLength(100)]
             [DataType(DataType.Text)]
             [Display(Name = "Last name")]
             public string LastName { get; set; }
 
-            [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [Required(ErrorMessage = "{0} is required")]
+            [StringLength(20, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
             public string Password { get; set; }
 
+            [Required(ErrorMessage = "{0} is required")]
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Compare("Password", ErrorMessage = "The password and confirmation password do not match")]
             public string ConfirmPassword { get; set; }
         }
 
@@ -99,8 +98,6 @@ namespace Smeat.Leader.Web.Areas.Identity.Pages.Account
                         );
 
                     @ViewData["Message"] = _stringLocalizer["Thank you for registering. You have been sent an email to confirm your account. Please click the link in the email to confirm your account and log in"];
-                    //await _signInManager.SignInAsync(user, isPersistent: false);
-                    //return LocalRedirect(returnUrl);
                 }
                 foreach (var error in result.Errors)
                 {
