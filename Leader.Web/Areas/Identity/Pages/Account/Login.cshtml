@@ -1,8 +1,9 @@
 ﻿@page
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
 @model Smeat.Leader.Web.Areas.Identity.Pages.Account.LoginModel
 
 @{
-    ViewData["Title"] = "Log in";
+    ViewData["Title"] = localizer["Log in"];
 }
 
 <div class="container account-login-container">
@@ -32,25 +33,16 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-default">Log in</button>
+                        <button type="submit" class="btn btn-default">@localizer["Log in"]</button>
                     </div>
                     <div class="form-group">
                         <p>
-                            <a asp-page="./ForgotPassword">Forgot your password?</a>
+                            <a asp-page="./ForgotPassword">@localizer["Forgot your password?"]</a>
                         </p>
                         <p>
-                            <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                            <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">@localizer["Register as a new user"]</a>
                         </p>
                     </div>
-                    <p>
-                        Note that for demo purposes you don't need to register and can login with these credentials:
-                    </p>
-                    <p>
-                        User:     <b>user@smeat.com</b> OR <b>admin@smeat.com</b>
-                    </p>
-                    <p>
-                        Password: <b>L3tM31N!</b>
-                    </p>
                 </form>
             </section>
         </div>

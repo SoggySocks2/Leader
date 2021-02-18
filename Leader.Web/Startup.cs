@@ -1,12 +1,20 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using Smeat.Leader.Infrastructure.Identity;
 using Smeat.Leader.Web.Configuration;
+using Smeat.Leader.Web.Resources;
+using Smeat.Leader.Web.Services;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Reflection;
 
 namespace Smeat.Leader.Web
 {
@@ -26,7 +34,8 @@ namespace Smeat.Leader.Web
             services.AddIdentity<LeaderUser, LeaderRole>(options =>
             {
                 options.User.RequireUniqueEmail = true;
-            }).AddEntityFrameworkStores<AuthDbContext>()
+                options.SignIn.RequireConfirmedEmail = true;
+            }).AddEntityFrameworkStores<AuthDbContext>()                       
             .AddDefaultTokenProviders(); /* 2 factor authentication */
 
             services.AddDbContext<AuthDbContext>(options =>
@@ -47,7 +56,38 @@ namespace Smeat.Leader.Web
             services.AddDatabaseDeveloperPageExceptionFilter();
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             //    .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddRazorPages();
+
+
+            /* Globalization */
+            services.AddLocalization(options => { options.ResourcesPath = "Resources"; });
+
+            services.AddSingleton<CommonLocalizationService>();
+
+            services.AddRazorPages()
+                .AddRazorRuntimeCompilation() /* Enable edit and continue */
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                //.AddDataAnnotationsLocalization(); /* Globalization */
+                .AddDataAnnotationsLocalization(options => /* Globalization */
+                {
+                    options.DataAnnotationLocalizerProvider = (type, factory) =>
+                    {
+                        var assemblyName = new AssemblyName(typeof(CommonResources).GetTypeInfo().Assembly.FullName);
+                        return factory.Create(nameof(CommonResources), assemblyName.Name);
+                    };
+                });
+
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var supportedCultures = new List<CultureInfo>
+                {
+                    new CultureInfo("en"),
+                    new CultureInfo("es"),
+                    new CultureInfo("fr")
+                };
+                options.DefaultRequestCulture = new RequestCulture("en");
+                options.SupportedCultures = supportedCultures;
+                options.SupportedUICultures = supportedCultures;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -72,6 +112,10 @@ namespace Smeat.Leader.Web
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            /* Add Globalization to the pipleline */
+            var localizationOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>().Value;
+            app.UseRequestLocalization(localizationOptions);
 
             app.UseEndpoints(endpoints =>
             {

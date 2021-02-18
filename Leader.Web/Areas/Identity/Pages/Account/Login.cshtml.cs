@@ -6,21 +6,23 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Smeat.Leader.Infrastructure.Identity;
 
 namespace Smeat.Leader.Web.Areas.Identity.Pages.Account
 {
-
     public class LoginModel : PageModel
     {
         private readonly SignInManager<LeaderUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly IStringLocalizer<LoginModel> _stringLocalizer;
 
-        public LoginModel(SignInManager<LeaderUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<LeaderUser> signInManager, ILogger<LoginModel> logger, IStringLocalizer<LoginModel> stringLocalizer)
         {
             _signInManager = signInManager;
             _logger = logger;
+            _stringLocalizer = stringLocalizer;
         }
 
         [BindProperty]
@@ -32,15 +34,19 @@ namespace Smeat.Leader.Web.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
+            [Required(ErrorMessage = "{0} is required")]
             [EmailAddress]
-            public string Email { get; set; } = string.Empty;
+            [Display(Name = "Email")]
+            [StringLength(100)]
+            public string Email { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "{0} is required")]
             [DataType(DataType.Password)]
+            [Display(Name = "Password")]
+            [StringLength(100)]
             public string Password { get; set; }
 
-            [Display(Name = "Remember me?")]
+            [Display(Name = "Remember me")]
             public bool RememberMe { get; set; }
         }
 
@@ -90,11 +96,15 @@ namespace Smeat.Leader.Web.Areas.Identity.Pages.Account
                 //    _logger.LogWarning("User account locked out.");
                 //    return RedirectToPage("./Lockout");
                 //}
+                else if (result.IsNotAllowed)
+                {
+                    ModelState.AddModelError(string.Empty, _stringLocalizer["Invalid login attempt. Please check your email and confirm your email address then try again."]);
+                }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return Page();
+                    ModelState.AddModelError(string.Empty, _stringLocalizer["Invalid login attempt."]);
                 }
+                return Page();
             }
 
             // If we got this far, something failed, redisplay form
