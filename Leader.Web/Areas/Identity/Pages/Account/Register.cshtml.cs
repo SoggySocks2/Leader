@@ -93,8 +93,11 @@ namespace Smeat.Leader.Web.Areas.Identity.Pages.Account
                         values: new { userId = user.Id, code = code },
                         protocol: Request.Scheme);
 
+                    /* Ensure the user sees the correct culture when clicking conform email */
+                    var currentCulture = System.Threading.Thread.CurrentThread.CurrentUICulture;
+
                     await _emailSender.SendEmailAsync(new string[] { Input.Email }, _stringLocalizer["Confirm your email"],
-                        string.Format("{0} <a href='{1}'>{2}</a>", _stringLocalizer["Please confirm your account by"], HtmlEncoder.Default.Encode(callbackUrl), _stringLocalizer["clicking here"])
+                        string.Format("{0} {1}<p/> {2} <a href='{3}&culture={4}'>{5}</a>", _stringLocalizer["Hello"], Input.FirstName + " " + Input.LastName, _stringLocalizer["Please confirm your account by"], HtmlEncoder.Default.Encode(callbackUrl), currentCulture, _stringLocalizer["clicking here"])
                         );
 
                     @ViewData["Message"] = _stringLocalizer["Thank you for registering. You have been sent an email to confirm your account. Please click the link in the email to confirm your account and log in"];

@@ -123,6 +123,9 @@
   <data name="Confirm your email" xml:space="preserve">
     <value>confirme su email</value>
   </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Hola</value>
+  </data>
   <data name="Please confirm your account by" xml:space="preserve">
     <value>Confirme su cuenta por</value>
   </data>

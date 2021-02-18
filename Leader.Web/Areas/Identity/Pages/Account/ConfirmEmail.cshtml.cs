@@ -15,6 +15,8 @@ namespace Smeat.Leader.Web.Areas.Identity.Pages.Account
         private readonly UserManager<LeaderUser> _userManager;
         private readonly IStringLocalizer<ConfirmEmailModel> _stringLocalizer;
 
+        public string CurrentUICulture { get; set; }
+
         public ConfirmEmailModel(UserManager<LeaderUser> userManager, IStringLocalizer<ConfirmEmailModel> stringLocalizer)
         {
             _userManager = userManager;
@@ -42,6 +44,7 @@ namespace Smeat.Leader.Web.Areas.Identity.Pages.Account
                 throw new InvalidOperationException(string.Format("{0} {1}.", msg, userId));
             }
 
+            CurrentUICulture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name;
             return Page();
         }
     }

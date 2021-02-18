@@ -32,13 +32,13 @@ namespace Smeat.Leader.Web.Areas.Identity.Pages.Account
             public string Email { get; set; }
 
             [Required(ErrorMessage = "{0} is required")]
-            [StringLength(100)]
+            [StringLength(30)]
             [DataType(DataType.Text)]
             [Display(Name = "First name")]
             public string FirstName { get; set; }
 
             [Required(ErrorMessage = "{0} is required")]
-            [StringLength(100)]
+            [StringLength(30)]
             [DataType(DataType.Text)]
             [Display(Name = "Last name")]
             public string LastName { get; set; }
