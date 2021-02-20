@@ -1,4 +1,5 @@
 ﻿@inject Smeat.Leader.Web.Services.CommonLocalizationService localizer
+@inject UserManager<Smeat.Leader.Infrastructure.Identity.LeaderUser> userManager
  
 <!DOCTYPE html>
 <html lang="en">
@@ -20,20 +21,30 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">@localizer.Get("Home")</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">@localizer.Get("Privacy")</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Customer" asp-page="/Details">@localizer.Get("Customer")</a>
-                        </li>
+                        @{
+                            if (User.Identity.IsAuthenticated)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/Index">@localizer.Get("Home")</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">@localizer.Get("Privacy")</a>
+                                </li>
+                            }
+                        }
+                        @*<li class="nav-item">
+                <a class="nav-link text-dark" asp-area="Customer" asp-page="/Details">@localizer.Get("Customer")</a>
+            </li>*@
                         <li class="nav-link">
                             <partial name="_CultureSelectorPartial" />
                         </li>
                     </ul>
-                    <partial name="_LoginPartial" />
+                    @{
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            <partial name="_LoginPartial" />
+                        }
+                    }
                 </div>
             </div>
         </nav>

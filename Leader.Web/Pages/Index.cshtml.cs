@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc.Localization;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using System.ComponentModel.DataAnnotations;
 
 namespace Smeat.Leader.Web.Pages
 {
@@ -13,6 +15,18 @@ namespace Smeat.Leader.Web.Pages
         {
             _logger = logger;
             _localizer = localizer;
+        }
+
+        [BindProperty]
+        public InputModel Input { get; set; }
+
+        public class InputModel
+        {
+            [Required(ErrorMessage = "{0} is required")]
+            [StringLength(100)]
+            [EmailAddress]
+            [Display(Name = "Search")]
+            public string Search { get; set; }
         }
 
         public void OnGet()

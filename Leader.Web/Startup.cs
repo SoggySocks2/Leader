@@ -67,7 +67,7 @@ namespace Smeat.Leader.Web
             services.AddRazorPages(options =>
                     {
                         //options.Conventions.AuthorizePage("/Contact");
-                        options.Conventions.AuthorizeAreaFolder("Customer", "/");
+                        //options.Conventions.AuthorizeAreaFolder("Customer", "/");
                         options.Conventions.AuthorizeAreaFolder("Identity", "/Account");
                         options.Conventions.AuthorizeFolder("/");
                         options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/AccessDenied");
