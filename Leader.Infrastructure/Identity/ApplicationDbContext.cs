@@ -9,5 +9,7 @@ namespace Smeat.Leader.Infrastructure.Identity
             : base(options)
         {
         }
+        DbSet<Core.Entities.CustomerAggregate.Customer> Customers { get; set; }
+        DbSet<Core.Entities.CustomerAggregate.Vehicle> Vehicles { get; set; }
     }
 }
