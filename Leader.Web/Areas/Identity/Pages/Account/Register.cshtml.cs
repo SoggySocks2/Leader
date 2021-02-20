@@ -22,13 +22,13 @@ namespace Smeat.Leader.Web.Areas.Identity.Pages.Account
             UserManager<LeaderUser> userManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
-            IStringLocalizer<RegisterModel> localizer
+            IStringLocalizer<RegisterModel> stringLocalizer
             )
         {
             _userManager = userManager;
             _logger = logger;
             _emailSender = emailSender;
-            _stringLocalizer = localizer;
+            _stringLocalizer = stringLocalizer;
         }
 
         [BindProperty]

@@ -12,6 +12,7 @@ using Smeat.Leader.Infrastructure.Identity;
 using Smeat.Leader.Web.Configuration;
 using Smeat.Leader.Web.Resources;
 using Smeat.Leader.Web.Services;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
@@ -63,7 +64,24 @@ namespace Smeat.Leader.Web
 
             services.AddSingleton<CommonLocalizationService>();
 
-            services.AddRazorPages()
+            services.AddRazorPages(options =>
+                    {
+                        //options.Conventions.AuthorizePage("/Contact");
+                        options.Conventions.AuthorizeAreaFolder("Customer", "/");
+                        options.Conventions.AuthorizeAreaFolder("Identity", "/Account");
+                        options.Conventions.AuthorizeFolder("/");
+                        options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/AccessDenied");
+                        options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/ConfirmEmail");
+                        options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/ForgotPassword");
+                        options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/ForgotPasswordConfirmation");
+                        options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/Login");
+                        options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/Logout");
+                        options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/Register");
+                        options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/ResetPassword");
+                        options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/ResetPasswordConfirmation");
+                        options.Conventions.AllowAnonymousToPage("/Privacy");
+                    }
+                )
                 .AddRazorRuntimeCompilation() /* Enable edit and continue */
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
                 //.AddDataAnnotationsLocalization(); /* Globalization */
@@ -76,6 +94,7 @@ namespace Smeat.Leader.Web
                     };
                 });
 
+
             services.Configure<RequestLocalizationOptions>(options =>
             {
                 var supportedCultures = new List<CultureInfo>
@@ -87,6 +106,17 @@ namespace Smeat.Leader.Web
                 options.DefaultRequestCulture = new RequestCulture("en");
                 options.SupportedCultures = supportedCultures;
                 options.SupportedUICultures = supportedCultures;
+            });
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                // Cookie settings
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+
+                options.LoginPath = "/Identity/Account/Login";
+                options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                options.SlidingExpiration = true;
             });
         }
 
@@ -120,6 +150,8 @@ namespace Smeat.Leader.Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                //endpoints.MapControllerRoute("default", "{controller:slugify=Home}/{action:slugify=Index}/{id?}");
+                //endpoints.MapControllerRoute("default", "{controller=Identity/Account}/{action=Login}/{id?}");
             });
         }
     }
