@@ -1,0 +1,92 @@
+﻿:root {
+    --theme-bg-color: #333;
+    --theme-bg-color-hover: Red;
+    --theme-color: Wheat;
+}
+.navbar {
+    display: flex;                                      /* Enable control of navbar alignment direction */
+    flex-direction: column;                             /* Stack navbar items vertically for mobile first */
+    background-color: var(--theme-bg-color);            /* Set the navbar background color */
+    color: var(--theme-color);                          /* Navbar font colour */
+}
+
+.navbar-title {
+    padding: 0.75rem;                                   /* Add space around the navbar title */
+    font-size: 1.5rem;                                  /* Enlarge the navbar title */
+}
+
+
+.navbar-links {
+    display: none; /* Site is mobile first so hide the nav links */
+    flex-direction: column; /* Stack nav links top to bottom */
+    white-space: nowrap; /* Prevent nav link text from wrapping */
+    align-items: center; /* Align nav links in the center */
+}
+
+.navbar-links.active {
+    display: flex;                                      /* Display the nav links - set by the navbar-toggle */
+}
+
+a.navbar-link {
+    padding: 0.5rem;                                    /* Add padding around each navbar link */
+    width: 100%;                                        /* Use 100% width to allow highlight entire width on navbar-link:hover */
+    text-align: center;                                 /* Center align navbar-link contents */
+    color: var(--theme-color);                          /* Set the navrbar link font color */
+    text-decoration: none;                              /* Remove underlines */
+}
+a.navbar-link:hover {
+    background-color: var(--theme-bg-color-hover);      /* Highlight the navbar-link */
+}
+
+a.navbar-link-title:hover {
+    background-color: unset;                            /* Prevent highlight of title. NOTE: This must be placed AFTER a.navbar-link:hover */
+}
+
+.navbar-right-container {
+    display: flex;                                      /* Align items horizontally */
+    position: absolute;                                 /* Allow precise positioning of the navbar-right-container */
+    top: 0.5rem;                                        /* Vertically align near the top of the screen */
+    right:0.75rem;                                      /* Horizontally align near the right of the screen */
+}
+
+.navbar-login {
+    padding: 0.5rem;                                    /* Add padding around the login\logout links */
+}
+
+.culture-select {
+    padding: 0.5rem;                                    /* Add padding around the culture selector */
+}
+
+.culture-selector {
+    width: 150px;                                       /* Set the width of the culture selector */
+}
+
+.navbar-toggle {
+    display: flex;                                      /* Allow vertical alignment */
+    flex-direction: column;                             /* Align bars vertically */
+    justify-content: space-evenly;                      /* Add an even amount of space between each bar to give the hamburger effect */
+    width: 31px;                                        /* Set the hamburger width */
+}
+
+.navbar-toggle .bar {
+    background-color: var(--theme-color);               /* Set the hamburger colour */
+    width: 100%;                                        /* Set the hamburger width */
+    height: 3px;                                        /* Set the hamburger bars height */
+    border-radius: 10px;                                /* Add a radius to each bar */
+}
+
+@media (min-width: 768px)
+{
+    .navbar {
+        flex-direction: row;                            /* Stack navbar items horizontally for larger screens */
+    }
+
+    .navbar-links {
+        display: flex;                                  /* Show nav links on larger screen */
+        flex-direction: row;                            /* Horizontally align nav links to the right of the title */
+    }
+
+    .navbar-toggle {
+        display: none;                                  /* Hide the navbar-toggle on larger screens */
+    }
+}
