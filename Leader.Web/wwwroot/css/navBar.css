@@ -6,16 +6,16 @@
 }
 
 .navbar-title {
-    padding: 0.75rem;                                   /* Add space around the navbar title */
-    font-size: 1.5rem;                                  /* Enlarge the navbar title */
+    padding: 0.1rem;                                    /* Add space around the navbar title */
+    font-size: 1.4rem;                                  /* Enlarge the navbar title */
+    width: 100%;                                        /* Align title to the left on smaller screens */
 }
 
-
 .navbar-links {
-    display: none; /* Site is mobile first so hide the nav links */
-    flex-direction: column; /* Stack nav links top to bottom */
-    white-space: nowrap; /* Prevent nav link text from wrapping */
-    align-items: center; /* Align nav links in the center */
+    display: none;                                      /* Site is mobile first so hide the nav links */
+    flex-direction: column;                             /* Stack nav links top to bottom */
+    white-space: nowrap;                                /* Prevent nav link text from wrapping */
+    align-items: center;                                /* Align nav links in the center */
 }
 
 .navbar-links.active {

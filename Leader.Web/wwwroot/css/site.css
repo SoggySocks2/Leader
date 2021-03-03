@@ -13,6 +13,12 @@ body {
     margin: 0;
 }
 
+/*.container {
+    max-width: 400px;
+}*/
+
+
+
 .footer {
     position: absolute;
     background-color: var(--theme-bg-color);
@@ -24,15 +30,3 @@ body {
     text-align: right;
     padding-right: 1rem;
 }
-
-/*.copyright {
-
-    position: absolute;
-    width: 100%;
-    background-color: var(--theme-bg-color);
-    color: var(--theme-color);
-    text-align: right;
-    bottom: 0;
-    white-space: nowrap;
-    line-height: 60px;*/ /* Vertically center the text there */
-/*}*/
