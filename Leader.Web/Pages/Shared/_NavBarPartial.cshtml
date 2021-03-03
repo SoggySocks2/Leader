@@ -1,0 +1,64 @@
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@inject Microsoft.Extensions.Options.IOptions<Microsoft.AspNetCore.Builder.RequestLocalizationOptions> locOptions
+
+@{
+    var culture = Context.Features.Get<Microsoft.AspNetCore.Localization.IRequestCultureFeature>();
+    var cultureList = locOptions.Value.SupportedUICultures.Select(x => new SelectListItem { Value = x.Name, Text = localizer.GetString(x.Name)}).ToList().OrderBy(x => x.Text);
+    var returnUrl = string.IsNullOrWhiteSpace(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}{Context.Request.QueryString}";
+}
+
+<link rel="stylesheet" href="~/css/navBar.css" />
+<div class="navbar">
+    <div class="navbar-title">        
+        <a class="navbar-link navbar-link-title" asp-area="" asp-page="/Index">@localizer["Leader"]</a>
+    </div>
+    <div class="navbar-links">
+
+        @{
+            if (User.Identity.IsAuthenticated)
+            {
+                <a class="navbar-link" asp-area="" asp-page="/Index">@localizer["Home"]</a>
+                <a class="navbar-link" asp-area="" asp-page="/Privacy">@localizer["Privacy"]</a>
+                <a class="navbar-link" asp-area="Identity" asp-page="/Account/Profile" title="Manage">@localizer["My Profile"]</a>
+            }
+        }
+
+    </div>
+
+    <div class="navbar-right-container">
+
+        <div class="navbar-login">
+            @{
+                if (!User.Identity.IsAuthenticated)
+                {
+                    <a class="navbar-link" asp-area="Identity" asp-page="/Account/Register">@localizer["Register"]</a>
+                    <a class="navbar-link" asp-area="Identity" asp-page="/Account/Login">@localizer["Login"]</a>
+                }
+                else
+                {
+                    <a class="navbar-link" asp-area="Identity" asp-page="/Account/Logout" title="Logout">@localizer["Logout"]</a>
+                }
+            }
+        </div>
+
+        <div class="culture-select">
+            <form asp-area="Culture" asp-page="/SetCulture" asp-route-returnUrl="@returnUrl" method="post">
+                <select class="culture-selector" name="culture" asp-for="@culture.RequestCulture.UICulture.Name" asp-items="cultureList" onchange="this.form.submit();"></select>
+            </form>
+        </div>
+
+        @{
+            if (User.Identity.IsAuthenticated)
+            {
+                <div class="navbar-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+
+            }
+        }
+
+    </div>
+
+</div>

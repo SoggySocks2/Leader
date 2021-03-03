@@ -126,4 +126,25 @@
   <data name="fr" xml:space="preserve">
     <value>français</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Maison</value>
+  </data>
+  <data name="Leader" xml:space="preserve">
+    <value>Leader</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Connexion</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Se déconnecter</value>
+  </data>
+  <data name="My Profile" xml:space="preserve">
+    <value>Mon profil</value>
+  </data>
+  <data name="Privacy" xml:space="preserve">
+    <value>Vie privée</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>S'inscrire</value>
+  </data>
 </root>

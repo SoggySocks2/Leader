@@ -126,20 +126,20 @@
   <data name="First name" xml:space="preserve">
     <value>Nombre de pila</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Hogar</value>
+  <data name="Hello" xml:space="preserve">
+    <value>Hola</value>
   </data>
   <data name="Last name" xml:space="preserve">
     <value>Apellido</value>
+  </data>
+  <data name="Leader" xml:space="preserve">
+    <value>Líder</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Contraseña</value>
   </data>
   <data name="Powered by" xml:space="preserve">
     <value>Energizado por</value>
-  </data>
-  <data name="Privacy" xml:space="preserve">
-    <value>Intimidad</value>
   </data>
   <data name="Remember me" xml:space="preserve">
     <value>Recuérdame</value>

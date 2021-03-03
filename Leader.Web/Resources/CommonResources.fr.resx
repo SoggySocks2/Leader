@@ -126,8 +126,8 @@
   <data name="First name" xml:space="preserve">
     <value>Prénom</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Maison</value>
+  <data name="Hello" xml:space="preserve">
+    <value>Bonjour</value>
   </data>
   <data name="Last name" xml:space="preserve">
     <value>Nom de famille</value>
@@ -137,9 +137,6 @@
   </data>
   <data name="Powered by" xml:space="preserve">
     <value>Alimenté par</value>
-  </data>
-  <data name="Privacy" xml:space="preserve">
-    <value>Vie privée</value>
   </data>
   <data name="Remember me" xml:space="preserve">
     <value>Souviens-toi de moi</value>
