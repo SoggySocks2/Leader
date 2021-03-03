@@ -14,7 +14,7 @@ pool:
 # Variables
 variables:
   buildConfiguration: 'Release'
-  wwwrootDir: 'Smeat.Leader.Web/wwwroot'
+  wwwrootDir: 'Leader.Web/wwwroot'
   dotnetSdkVersion: '5.0.200'
 
 
