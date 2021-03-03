@@ -20,5 +20,12 @@ steps:
   displayName: Automated Unit Tests
   inputs:
     command: 'test'
-    projects: 'tests/**/*.csproj'
+    projects: 'tests/**/Leader.UnitTests.csproj'
+
+
+- task: DotNetCoreCLI@2
+  displayName: Automated Integration Tests
+  inputs:
+    command: 'test'
+    projects: 'tests/**/Leader.IntegrationTests.csproj'
 
