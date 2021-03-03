@@ -17,7 +17,8 @@ steps:
   displayName: 'dotnet build $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
+  displayName: Automated Unit Tests
   inputs:
     command: 'test'
-    testRunTitle: 'Unit Tests'
+    projects: 'tests/**/*.csproj'
 
