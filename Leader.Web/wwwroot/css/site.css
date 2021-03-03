@@ -1,4 +1,10 @@
-﻿* {
+﻿:root {
+    --theme-bg-color: #333;
+    --theme-bg-color-hover: Red;
+    --theme-color: Wheat;
+}
+
+* {
     box-sizing: border-box;
 }
 
@@ -9,8 +15,24 @@ body {
 
 .footer {
     position: absolute;
+    background-color: var(--theme-bg-color);
+    color: var(--theme-color);
     bottom: 0;
     width: 100%;
     white-space: nowrap;
     line-height: 60px; /* Vertically center the text there */
+    text-align: right;
+    padding-right: 1rem;
 }
+
+/*.copyright {
+
+    position: absolute;
+    width: 100%;
+    background-color: var(--theme-bg-color);
+    color: var(--theme-color);
+    text-align: right;
+    bottom: 0;
+    white-space: nowrap;
+    line-height: 60px;*/ /* Vertically center the text there */
+/*}*/

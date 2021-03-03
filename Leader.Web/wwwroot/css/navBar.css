@@ -1,9 +1,4 @@
-﻿:root {
-    --theme-bg-color: #333;
-    --theme-bg-color-hover: Red;
-    --theme-color: Wheat;
-}
-.navbar {
+﻿.navbar {
     display: flex;                                      /* Enable control of navbar alignment direction */
     flex-direction: column;                             /* Stack navbar items vertically for mobile first */
     background-color: var(--theme-bg-color);            /* Set the navbar background color */
