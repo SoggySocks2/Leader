@@ -14,15 +14,18 @@ pool:
 # Variables
 variables:
   buildConfiguration: 'Release'
-  wwwrootDir: 'Leader.Web/wwwroot'
+  wwwrootDir: 'Smeat.Leader.Web/wwwroot'
   dotnetSdkVersion: '5.0.200'
 
+
+steps:
+
+# Write build version to file
 - script: 'echo "$(Build.DefinitionName), $(Build.BuildId), $(Build.BuildNumber)" > buildinfo.txt'
   displayName: 'Write build info'
   workingDirectory: $(wwwrootDir)
 
 # Compile
-steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 
