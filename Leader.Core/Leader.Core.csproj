@@ -6,4 +6,8 @@
     <RootNamespace>Smeat.Leader.Core</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Smeat.Leader.SharedKernel\Smeat.Leader.SharedKernel.csproj" />
+  </ItemGroup>
+
 </Project>
