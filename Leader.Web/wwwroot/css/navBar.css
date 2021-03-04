@@ -8,7 +8,6 @@
 .navbar-title {
     padding: 0.1rem;                                    /* Add space around the navbar title */
     font-size: 1.4rem;                                  /* Enlarge the navbar title */
-    width: 100%;                                        /* Align title to the left on smaller screens */
 }
 
 .navbar-links {
