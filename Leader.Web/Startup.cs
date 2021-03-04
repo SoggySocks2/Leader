@@ -153,6 +153,19 @@ namespace Smeat.Leader.Web
                 //endpoints.MapControllerRoute("default", "{controller:slugify=Home}/{action:slugify=Index}/{id?}");
                 //endpoints.MapControllerRoute("default", "{controller=Identity/Account}/{action=Login}/{id?}");
             });
+
+            //Ensure database migrations are automatically applied
+            InitializeDatabases(app);
+        }
+
+        // Automatically apply any outstanding database migrations
+        private void InitializeDatabases(IApplicationBuilder app)
+        {
+            using (var scope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                scope.ServiceProvider.GetRequiredService<AuthDbContext>().Database.Migrate();
+                scope.ServiceProvider.GetRequiredService<ApplicationDbContext>().Database.Migrate();
+            }
         }
     }
 }
