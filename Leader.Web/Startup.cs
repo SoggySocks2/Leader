@@ -64,25 +64,24 @@ namespace Smeat.Leader.Web
 
             services.AddSingleton<CommonLocalizationService>();
 
-            //services.AddRazorPages(options =>
-            //        {
-            //            //options.Conventions.AuthorizePage("/Contact");
-            //            //options.Conventions.AuthorizeAreaFolder("Customer", "/");
-            //            options.Conventions.AuthorizeAreaFolder("Identity", "/Account");
-            //            options.Conventions.AuthorizeFolder("/");
-            //            options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/AccessDenied");
-            //            options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/ConfirmEmail");
-            //            options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/ForgotPassword");
-            //            options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/ForgotPasswordConfirmation");
-            //            options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/Login");
-            //            options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/Logout");
-            //            options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/Register");
-            //            options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/ResetPassword");
-            //            options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/ResetPasswordConfirmation");
-            //            options.Conventions.AllowAnonymousToPage("/Privacy");
-            //        }
-            //    )
-            services.AddRazorPages()
+            services.AddRazorPages(options =>
+                    {
+                        //options.Conventions.AuthorizePage("/Contact");
+                        //options.Conventions.AuthorizeAreaFolder("Customer", "/");
+                        options.Conventions.AuthorizeAreaFolder("Identity", "/Account");
+                        options.Conventions.AuthorizeFolder("/");
+                        options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/AccessDenied");
+                        options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/ConfirmEmail");
+                        options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/ForgotPassword");
+                        options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/ForgotPasswordConfirmation");
+                        options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/Login");
+                        options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/Logout");
+                        options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/Register");
+                        options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/ResetPassword");
+                        options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/ResetPasswordConfirmation");
+                        options.Conventions.AllowAnonymousToPage("/Privacy");
+                    }
+                )
                 .AddRazorRuntimeCompilation() /* Enable edit and continue */
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
                 //.AddDataAnnotationsLocalization(); /* Globalization */
