@@ -41,19 +41,19 @@ steps:
   displayName: Auto Unit Tests
   inputs:
     command: 'test'
-    projects: 'tests/**/Leader.UnitTests.csproj'
+    projects: '**/Leader.UnitTests.csproj'
 
 - task: DotNetCoreCLI@2
   displayName: Auto Integration Tests
   inputs:
     command: 'test'
-    projects: 'tests/**/Leader.IntegrationTests.csproj'
+    projects: '**/Leader.IntegrationTests.csproj'
 
 - task: DotNetCoreCLI@2
   displayName: Auto Functional Tests
   inputs:
     command: 'test'
-    projects: 'tests/**/Leader.FunctionalTests.csproj'
+    projects: '**/Leader.FunctionalTests.csproj'
 # Automated tests - END
 
 # Publish - Start
