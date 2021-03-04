@@ -6,8 +6,8 @@
 }
 
 .navbar-title {
-    padding: 0.1rem;                                    /* Add space around the navbar title */
-    font-size: 1.4rem;                                  /* Enlarge the navbar title */
+    padding: 0.75rem;                                    /* Add space around the navbar title */
+    font-size: 1.5rem;                                   /* Enlarge the navbar title */
 }
 
 .navbar-links {
