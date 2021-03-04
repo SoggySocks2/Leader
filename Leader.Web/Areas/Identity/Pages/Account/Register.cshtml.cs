@@ -82,6 +82,11 @@ namespace Smeat.Leader.Web.Areas.Identity.Pages.Account
             {
                 var user = new LeaderUser { UserName = Input.Email, Email = Input.Email, FirstName = Input.FirstName, LastName = Input.LastName };
                 var result = await _userManager.CreateAsync(user, Input.Password);
+
+                /* Temp for debugging */
+                @ViewData["Message"] = result.ToString();
+                return Page();
+
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
