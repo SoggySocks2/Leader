@@ -163,7 +163,7 @@ namespace Smeat.Leader.Web
         {
             using (var scope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
-                scope.ServiceProvider.GetRequiredService<AuthDbContext>().Database.Migrate();
+                //scope.ServiceProvider.GetRequiredService<AuthDbContext>().Database.Migrate();
                 scope.ServiceProvider.GetRequiredService<ApplicationDbContext>().Database.Migrate();
             }
         }
