@@ -81,11 +81,19 @@ namespace Smeat.Leader.Web.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = new LeaderUser { UserName = Input.Email, Email = Input.Email, FirstName = Input.FirstName, LastName = Input.LastName };
-                var result = await _userManager.CreateAsync(user, Input.Password);
+                //var result = await _userManager.CreateAsync(user, Input.Password);
 
                 /* Temp for debugging */
-                @ViewData["Message"] = result.ToString();
-                return Page();
+                IdentityResult result;
+                try
+                {
+                    result = await _userManager.CreateAsync(user, Input.Password);
+                }
+                catch (System.Exception ex)
+                {
+                    @ViewData["Message"] = "Error: " + ex.Message;
+                    return Page();
+                }
 
                 if (result.Succeeded)
                 {
