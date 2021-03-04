@@ -25,16 +25,7 @@ steps:
   displayName: 'Write build info'
   workingDirectory: $(wwwrootDir)
 
-# Restore dependancies
-- task: DotNetCoreCLI@2
-  displayName: 'Restore project dependencies'
-  inputs:
-    command: 'restore'
-    projects: '**/*.csproj'
 
-# Compile
-- script: dotnet build --configuration $(buildConfiguration) --no-restore
-  displayName: 'dotnet build $(buildConfiguration)'
 
 # Automated tests - BEGIN
 - task: DotNetCoreCLI@2
