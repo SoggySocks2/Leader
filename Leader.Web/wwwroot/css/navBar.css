@@ -41,6 +41,7 @@ a.navbar-link-title:hover {
     position: absolute;                                 /* Allow precise positioning of the navbar-right-container */
     top: 0.5rem;                                        /* Vertically align near the top of the screen */
     right:0.75rem;                                      /* Horizontally align near the right of the screen */
+    padding: 0.25rem;
 }
 
 .navbar-login {
