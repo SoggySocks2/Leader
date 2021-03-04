@@ -155,7 +155,7 @@ namespace Smeat.Leader.Web
             });
 
             //Ensure database migrations are automatically applied
-            InitializeDatabases(app);
+            //InitializeDatabases(app);
         }
 
         // Automatically apply any outstanding database migrations
