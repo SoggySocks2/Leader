@@ -47,9 +47,16 @@ namespace Smeat.Leader.Web.Pages
         /// <returns></returns>
         private string ReadBuildInfo()
         {
-            var reader = new StreamReader(_hostingEnvironment.WebRootPath + "\\buildinfo.txt");
-            var fileContents = reader.ReadToEnd();
-            return fileContents;
+            try
+            {
+                var reader = new StreamReader(_hostingEnvironment.WebRootPath + "\\buildinfo.txt");
+                var fileContents = reader.ReadToEnd();
+                return fileContents;
+            }
+            catch
+            {
+                return "Error reading build info";
+            }
         }
     }
 }
