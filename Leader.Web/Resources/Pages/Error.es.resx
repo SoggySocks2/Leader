@@ -117,16 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Enter your credentials" xml:space="preserve">
-    <value>Entrez vos identifiants</value>
+  <data name="An error occurred while processing your request" xml:space="preserve">
+    <value>Se produjo un error al procesar su solicitud</value>
   </data>
-  <data name="Forgot your password?" xml:space="preserve">
-    <value>Mot de passe oublié?</value>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
   </data>
-  <data name="Log in" xml:space="preserve">
-    <value>Connexion</value>
+  <data name="Please contact your administrator quoting the above request id" xml:space="preserve">
+    <value>Comuníquese con su administrador citando el ID de solicitud anterior</value>
   </data>
-  <data name="Register as a new user" xml:space="preserve">
-    <value>S'inscrire en tant que nouvel utilisateur</value>
+  <data name="Request ID" xml:space="preserve">
+    <value>ID de solicitud</value>
   </data>
 </root>

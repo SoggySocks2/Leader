@@ -2,6 +2,13 @@
     --theme-bg-color: #333;
     --theme-bg-color-hover: Red;
     --theme-color: Wheat;
+    --theme-color-page-title: #ff6a00;
+    --theme-color-border: Red;
+    --theme-bg-color-fieldset: #eee;
+    --theme-color-fieldset-legend: Wheat;
+    --theme-bg-color_button: #f44336;
+    --theme-color_button: Wheat;
+    --theme-color-error: Red;
 }
 
 * {
@@ -9,8 +16,89 @@
 }
 
 body {
-    padding: 0;
-    margin: 0;
+    padding: 0;                                             /* Remove padding */
+    margin: 0;                                              /* Remove margins */
+    font-family: Barlow,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    overflow-y: scroll;
+}
+
+.container {
+    display: flex;                                          /* Allow control of horizontal or vertical layout */
+    flex-direction: column;                                 /* Stack items vertically */
+    width: 100%;                                            /* Set to full width on smaller screens */
+    margin: auto;                                           /* Larger screen will use smaller widths so align center screen */
+    padding: 0.5rem;
+}
+
+.title {
+    font-size: 1.75rem;                                     /* Page title font size */
+    color: var(--theme-color-page-title);                   /* Page title font color */
+    border-bottom: 1px solid var(--theme-color-border);     /* Add a border below the page title */
+}
+
+fieldset {
+    display: flex;                                          /* Allow horizontal or vertical alingment */
+    flex-direction: column;                                 /* Stack items vertically */
+    background-color: var(--theme-bg-color-fieldset);       /* Give the fieldset a background color */
+}
+
+legend {
+    padding: 5px 10px;                                      /* Add padding around legend content */
+    background-color: var(--theme-color-border);            /* Legend background color */
+    color: var(--theme-color-fieldset-legend);              /* Legend font color */
+}
+
+.form-group {
+    display: flex;                                          /* Allow horizontal or vertical alingment */
+    flex-direction: column;                                 /* Align items vertically */
+    width: 100%;                                            /* Span entire container width */
+    padding: 0.5rem;                                        /* Add spacing between form-groups */
+}
+
+.form-control {
+    /*max-width: 200px;*/
+}
+
+.form-group label {
+    margin-right: auto;                                     /* Ensure input boxes line up */
+}
+
+.form-group-links {
+    display: flex;                                          /* Allow horizontal or vertical alingment */
+    flex-direction: row;                                    /* Align items horizontally */
+    justify-content: space-between;                         /* Ensure links are spaced out */
+    font-size: 0.75rem;                                     /* Set link font size */
+}
+.form-group a {
+    text-decoration: none;                                  /* Remove texy underlines */
+}
+
+.btn {
+    background-color: var(--theme-bg-color_button);         /* Set button background color */
+    color: var(--theme-color_button);                       /* Set button font color */
+    font-size: 12px;                                        /* Set button font size */
+    padding: 6px 14px;                                      /* Add padding around button text */
+    border-radius: 4px;                                     /* Round the button corners */
+    margin-left: auto;                                      /* Align button to the right */
+}
+
+.error-summary {
+    display: none;                                          /* Hide on smaller screens */
+    font-size: 1.25rem;                                     /* Increase the font size */
+    color: var(--theme-color-error);                        /* Validation error font color */
+}
+.error {
+    color: var(--theme-color-error);                        /* Validation error font color */
+    font-size: 0.75rem;
+}
+
+.message {
+    color: var(--theme-color-error); /* Validation error font color */
+    font-size: 0.75rem;
+}
+
+.error ul {
+    list-style: none; /* Remove bullet points */
 }
 
 .footer {
@@ -23,4 +111,40 @@ body {
     line-height: 40px;
     text-align: right;
     padding-right: 1rem;
+}
+
+/* small */
+@media (max-width: 540px) {
+}
+
+/* medium */
+@media (min-width: 541px) {
+
+    .error-summary {
+        display: flex;
+    }
+
+    .form-group-links {
+        font-size: 1.0rem; /* Set link font size */
+    }
+    .container {
+        width: auto;
+    }
+}
+
+/* large */
+@media (min-width: 721px) {
+}
+
+/* extra large */
+@media (min-width: 961px) {
+    .container {
+        width: auto;
+    }
+}
+
+/* extra, extra large */
+@media (min-width: 1141px) {
+
+
 }
