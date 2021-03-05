@@ -24,7 +24,8 @@ namespace Smeat.Leader.FunctionalTests.Web
     {
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
-            builder.UseEnvironment("Testing");
+            //builder.UseEnvironment("Testing");
+            builder.UseEnvironment("Development");
 
             builder.ConfigureServices(services =>
             {
