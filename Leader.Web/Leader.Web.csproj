@@ -9,9 +9,13 @@
 
   <ItemGroup>
     <Content Remove="appsettings.Development.json" />
+    <Content Remove="appsettings.Testing.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="appsettings.Testing.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
     <None Include="appsettings.Development.json">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
