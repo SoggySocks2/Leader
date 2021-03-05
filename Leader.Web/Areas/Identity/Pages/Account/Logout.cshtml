@@ -5,7 +5,12 @@
     ViewData["Title"] = localizer["Logout"];
 }
 
-<header>
-    <h1>@ViewData["Title"]</h1>
-    <p>@localizer["You have successfully logged out of the application."]</p>
-</header>
+<div class="container">
+    <div class="title">@ViewData["Title"]</div>
+    <br />
+
+    <div class="container">
+        @localizer["You have successfully logged out of the application."]
+    </div>
+
+</div>

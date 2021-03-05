@@ -5,15 +5,19 @@
     ViewData["Title"] = localizer["Confirm email"];
 }
 
-<h2>@ViewData["Title"]</h2>
-<div>
-    <p>
-        @{
-            var url = string.Format("/Identity/Account/Login?Culture={0}", Model.CurrentUICulture);
-            var link = "<a href=\"" + url + "\">";
-        }
-        @localizer["Thank you for confirming your email. Please click {0}here{1} to log in", Html.Raw(link), Html.Raw("</a>")]
-    </p>
-</div>
+<div class="container">
+    <div class="title">@ViewData["Title"]</div>
+    <br />
 
+    <div class="container">
+        <p>
+            @{
+                var url = string.Format("/Identity/Account/Login?Culture={0}", Model.CurrentUICulture);
+                var link = "<a href=\"" + url + "\">";
+            }
+            @localizer["Thank you for confirming your email. Please click {0}here{1} to log in", Html.Raw(link), Html.Raw("</a>")]
+        </p>
+    </div>
+
+</div>
 

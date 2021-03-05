@@ -12,21 +12,18 @@
     <script src="~/js/navBar.js" defer></script>
 </head>
 <body>
-    <header>
+    <header role="navigation">
         <partial name="_NavBarPartial" />
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+
+    <main role="main" class="container">
+        @RenderBody()
+    </main>
 
     <footer class="footer">
-        <div class="copyright">
-            <a class="navbar-link" href="mailto:peter_jones_glass@hotmail.com?subject=Website Enquiry">
-                &copy; 2021 - @localizer.Get("Powered by") Smeat
-            </a>
-        </div>
+        <a class="navbar-link" href="mailto:peter_jones_glass@hotmail.com?subject=Website Enquiry">
+            &copy; 2021 - @localizer.Get("Powered by") Smeat
+        </a>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
