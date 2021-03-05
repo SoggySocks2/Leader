@@ -66,20 +66,12 @@ namespace Smeat.Leader.Web
 
             services.AddRazorPages(options =>
                     {
-                        //options.Conventions.AuthorizePage("/Contact");
-                        //options.Conventions.AuthorizeAreaFolder("Customer", "/");
-                        options.Conventions.AuthorizeAreaFolder("Identity", "/Account");
-                        options.Conventions.AuthorizeFolder("/");
-                        options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/AccessDenied");
-                        options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/ConfirmEmail");
-                        options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/ForgotPassword");
-                        options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/ForgotPasswordConfirmation");
-                        options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/Login");
-                        options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/Logout");
-                        options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/Register");
-                        options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/ResetPassword");
-                        options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/ResetPasswordConfirmation");
-                        options.Conventions.AllowAnonymousToPage("/Privacy");
+                        /* Prevent anonymous access to all (non area) pages except Privacy and Error */
+                        options.Conventions.AuthorizeFolder("/").AllowAnonymousToPage("/Privacy").AllowAnonymousToPage("/Error");
+                        /* Prevent anonymous access to the Identity area, secured folder */
+                        options.Conventions.AuthorizeAreaFolder("Identity", "/Secured");
+                        /* Allow anonymous access to the Identity area, account folder */
+                        options.Conventions.AllowAnonymousToAreaFolder("Identity", "/Account");
                     }
                 )
                 .AddRazorRuntimeCompilation() /* Enable edit and continue */
@@ -150,8 +142,6 @@ namespace Smeat.Leader.Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
-                //endpoints.MapControllerRoute("default", "{controller:slugify=Home}/{action:slugify=Index}/{id?}");
-                //endpoints.MapControllerRoute("default", "{controller=Identity/Account}/{action=Login}/{id?}");
             });
 
             //Ensure database migrations are automatically applied

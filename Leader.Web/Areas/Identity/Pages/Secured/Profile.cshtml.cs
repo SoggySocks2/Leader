@@ -7,7 +7,7 @@ using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Smeat.Leader.Infrastructure.Identity;
 
-namespace Smeat.Leader.Web.Areas.Identity.Pages.Account
+namespace Smeat.Leader.Web.Areas.Identity.Pages.Secured
 {
     public class ProfileModel : PageModel
     {
@@ -47,7 +47,7 @@ namespace Smeat.Leader.Web.Areas.Identity.Pages.Account
         public async Task OnGet()
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
-
+            if (user == null) user = new LeaderUser();
             Input = new InputModel
             {
                 Email = user.Email,
