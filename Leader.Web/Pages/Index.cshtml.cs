@@ -12,9 +12,9 @@ namespace Smeat.Leader.Web.Pages
     {
         private readonly ILogger<IndexModel> _logger;
         private readonly IHtmlLocalizer _localizer;
-        protected readonly IHostingEnvironment _hostingEnvironment;
+        protected readonly IWebHostEnvironment _hostingEnvironment;
 
-        public IndexModel(ILogger<IndexModel> logger, IHtmlLocalizer<IndexModel> localizer, IHostingEnvironment hostingEnvironment)
+        public IndexModel(ILogger<IndexModel> logger, IHtmlLocalizer<IndexModel> localizer, IWebHostEnvironment hostingEnvironment)
         {
             _logger = logger;
             _localizer = localizer;

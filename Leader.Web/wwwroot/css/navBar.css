@@ -32,8 +32,13 @@ a.navbar-link:hover {
     background-color: var(--theme-bg-color-hover);      /* Highlight the navbar-link */
 }
 
+a.navbar-link-title {
+    visibility:hidden;                                  /* Hide title by default to cater for the smallest screens */
+    font-size: 1.0rem;                                  /* Set initial title size to fit smaller screens */
+}
+
 a.navbar-link-title:hover {
-    background-color: unset;                            /* Prevent highlight of title. NOTE: This must be placed AFTER a.navbar-link:hover */
+    background-color: unset; /* Prevent highlight of title. NOTE: This must be placed AFTER a.navbar-link:hover */
 }
 
 .navbar-right-container {
@@ -70,12 +75,19 @@ a.navbar-link-title:hover {
     border-radius: 10px;                                /* Add a radius to each bar */
 }
 
+@media (min-width: 400px)
+{
+    a.navbar-link-title {
+        visibility: unset;                              /* Show navbar title */
+        font-size: 1.25rem;                             /* Increase title size for larger screens */
+    }
+}
+
 @media (min-width: 768px)
 {
     .navbar {
         flex-direction: row;                            /* Stack navbar items horizontally for larger screens */
     }
-
     .navbar-links {
         display: flex;                                  /* Show nav links on larger screen */
         flex-direction: row;                            /* Horizontally align nav links to the right of the title */

@@ -25,6 +25,7 @@ namespace Smeat.Leader.Infrastructure.Services
             return await SendEmailAsync(recipients, subject, body, true, MailPriority.Normal, attachments);
         }
 
+        #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<Task> SendEmailAsync(string[] recipients, string subject, string body, bool bodyIsHtml, MailPriority priority, string[] attachments)
         {
             string smtpServer = "mail.loyaltylogistix.com";
