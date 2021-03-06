@@ -34,7 +34,7 @@ steps:
 
 # Compile
 - script: dotnet build --configuration $(buildConfiguration) --no-restore
-  displayName: 'Build - $(buildConfiguration)'
+  displayName: 'Build - [$(buildConfiguration)]'
 
 # Automated tests - BEGIN
 - task: DotNetCoreCLI@2
@@ -58,7 +58,7 @@ steps:
 
 # Publish - Start
 - task: DotNetCoreCLI@2
-  displayName: 'Publish project - $(buildConfiguration)'
+  displayName: 'Publish - [$(buildConfiguration)]'
   inputs:
     command: 'publish'
     projects: '**/*.csproj'
