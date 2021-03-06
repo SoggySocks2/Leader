@@ -53,7 +53,7 @@ namespace Smeat.Leader.FunctionalTests.Web
                         .GetRequiredService<ILogger<WebTestFixture>>();
 
                     // Ensure the database is created.
-                    db.Database.EnsureCreated();
+                    //db.Database.EnsureCreated();
 
                     try
                     {
