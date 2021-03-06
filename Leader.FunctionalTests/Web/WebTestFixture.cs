@@ -30,13 +30,13 @@ namespace Smeat.Leader.FunctionalTests.Web
                 // database for testing.
                 services.AddDbContext<ApplicationDbContext>(options =>
                 {
-                    options.UseInMemoryDatabase("InMemoryDbForTesting");
+                    options.UseInMemoryDatabase("Leader");
                     options.UseInternalServiceProvider(provider);
                 });
 
                 services.AddDbContext<AuthDbContext>(options =>
                 {
-                    options.UseInMemoryDatabase("Identity");
+                    options.UseInMemoryDatabase("AuthData");
                     options.UseInternalServiceProvider(provider);
                 });
 
