@@ -29,4 +29,10 @@
     <ProjectReference Include="..\Leader.Web\Leader.Web.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="App.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
