@@ -1,22 +1,8 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Smeat.Leader.Web;
-using System;
-
-
-
-//using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
-//using Microsoft.AspNetCore.Mvc.Testing;
-//using Microsoft.EntityFrameworkCore;
-//using Microsoft.eShopWeb.Infrastructure.Data;
-//using Microsoft.eShopWeb.Infrastructure.Identity;
-//using Microsoft.eShopWeb.Web;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Smeat.Leader.Infrastructure.Identity;
-using Microsoft.EntityFrameworkCore;
-//using System;
 
 namespace Smeat.Leader.FunctionalTests.Web
 {
