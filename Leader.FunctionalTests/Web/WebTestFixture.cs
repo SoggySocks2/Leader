@@ -50,14 +50,14 @@ namespace Smeat.Leader.FunctionalTests.Web
                 using (var scope = sp.CreateScope())
                 {
                     var scopedServices = scope.ServiceProvider;
-                    var db = scopedServices.GetRequiredService<ApplicationDbContext>();
+                    //var db = scopedServices.GetRequiredService<ApplicationDbContext>();
                     var loggerFactory = scopedServices.GetRequiredService<ILoggerFactory>();
 
                     var logger = scopedServices
                         .GetRequiredService<ILogger<WebTestFixture>>();
 
                     // Ensure the database is created.
-                    db.Database.EnsureCreated();
+                    //db.Database.EnsureCreated();
 
                     try
                     {
