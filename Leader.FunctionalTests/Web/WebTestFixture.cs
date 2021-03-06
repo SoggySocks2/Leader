@@ -7,6 +7,7 @@ using Smeat.Leader.Infrastructure.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using System;
+using Microsoft.Extensions.Configuration;
 
 namespace Smeat.Leader.FunctionalTests.Web
 {
@@ -14,67 +15,67 @@ namespace Smeat.Leader.FunctionalTests.Web
     {
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
-            //builder.UseEnvironment("Testing");
-            builder.UseEnvironment("Development");
+            ////builder.UseEnvironment("Testing");
+            //builder.UseEnvironment("Development");
 
-            builder.ConfigureServices(services =>
-            {
-                services.AddEntityFrameworkInMemoryDatabase();
+            //builder.ConfigureServices(services =>
+            //{
+            //    services.AddEntityFrameworkInMemoryDatabase();
 
-                // Create a new service provider.
-                var provider = services
-                    .AddEntityFrameworkInMemoryDatabase()
-                    .BuildServiceProvider();
+            //    // Create a new service provider.
+            //    var provider = services
+            //        .AddEntityFrameworkInMemoryDatabase()
+            //        .BuildServiceProvider();
 
-                // Add a database context (ApplicationDbContext) using an in-memory 
-                // database for testing.
-                services.AddDbContext<ApplicationDbContext>(options =>
-                {
-                    options.UseInMemoryDatabase("Leader");
-                    options.UseInternalServiceProvider(provider);
-                });
+            //    // Add a database context (ApplicationDbContext) using an in-memory 
+            //    // database for testing.
+            //    services.AddDbContext<ApplicationDbContext>(options =>
+            //    {
+            //        options.UseInMemoryDatabase("Leader");
+            //        options.UseInternalServiceProvider(provider);
+            //    });
 
-                services.AddDbContext<AuthDbContext>(options =>
-                {
-                    options.UseInMemoryDatabase("AuthData");
-                    options.UseInternalServiceProvider(provider);
-                });
+            //    services.AddDbContext<AuthDbContext>(options =>
+            //    {
+            //        options.UseInMemoryDatabase("AuthData");
+            //        options.UseInternalServiceProvider(provider);
+            //    });
 
-                // Build the service provider.
-                var sp = services.BuildServiceProvider();
+            //    // Build the service provider.
+            //    var sp = services.BuildServiceProvider();
                 
 
-                // Create a scope to obtain a reference to the database
-             //context (ApplicationDbContext).
-            using (var scope = sp.CreateScope())
-            {
-                    var scopedServices = scope.ServiceProvider;
-                    var db = scopedServices.GetRequiredService<ApplicationDbContext>();
-                    var loggerFactory = scopedServices.GetRequiredService<ILoggerFactory>();
+            //    // Create a scope to obtain a reference to the database
+            // //context (ApplicationDbContext).
+            //using (var scope = sp.CreateScope())
+            //{
+            //        var scopedServices = scope.ServiceProvider;
+            //        var db = scopedServices.GetRequiredService<ApplicationDbContext>();
+            //        var loggerFactory = scopedServices.GetRequiredService<ILoggerFactory>();
 
-                var logger = scopedServices
-                    .GetRequiredService<ILogger<WebTestFixture>>();
+            //    var logger = scopedServices
+            //        .GetRequiredService<ILogger<WebTestFixture>>();
 
-                    // Ensure the database is created.
-                    db.Database.EnsureCreated();
+            //        // Ensure the database is created.
+            //        db.Database.EnsureCreated();
 
-                    try
-                    {
-                        //            // Seed the database with test data.
-                        //            //CatalogContextSeed.SeedAsync(db, loggerFactory).Wait();
+            //        try
+            //        {
+            //            //            // Seed the database with test data.
+            //            //            //CatalogContextSeed.SeedAsync(db, loggerFactory).Wait();
 
-                        //            // seed sample user data
-                        var userManager = scopedServices.GetRequiredService<UserManager<LeaderUser>>();
-                        var roleManager = scopedServices.GetRequiredService<RoleManager<LeaderRole>>();
-                        //            //AppIdentityDbContextSeed.SeedAsync(userManager, roleManager).Wait();
-                    }
-                    catch (Exception ex)
-                    {
-                        logger.LogError(ex, $"An error occurred seeding the " +
-                            "database with test messages. Error: {ex.Message}");
-                    }
-                }
-            });
+            //            //            // seed sample user data
+            //            var userManager = scopedServices.GetRequiredService<UserManager<LeaderUser>>();
+            //            var roleManager = scopedServices.GetRequiredService<RoleManager<LeaderRole>>();
+            //            //            //AppIdentityDbContextSeed.SeedAsync(userManager, roleManager).Wait();
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            logger.LogError(ex, $"An error occurred seeding the " +
+            //                "database with test messages. Error: {ex.Message}");
+            //        }
+            //    }
+            //});
         }
     }
 }
