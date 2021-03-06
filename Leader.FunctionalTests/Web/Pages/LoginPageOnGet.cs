@@ -22,9 +22,8 @@ namespace Smeat.Leader.FunctionalTests.Web.Pages
             response.EnsureSuccessStatusCode();
             var stringResponse = await response.Content.ReadAsStringAsync();
 
-            //// Assert
-            //Assert.Contains("Log in", stringResponse);
-            Assert.Contains("Log in", "Log in");
+            // Assert
+            Assert.Contains("Log in", stringResponse);
         }
     }
 }

@@ -5,9 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Smeat.Leader.Infrastructure.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
 using System;
-using Microsoft.Extensions.Configuration;
 
 namespace Smeat.Leader.FunctionalTests.Web
 {
@@ -16,7 +14,6 @@ namespace Smeat.Leader.FunctionalTests.Web
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
             builder.UseEnvironment("Testing");
-            //builder.UseEnvironment("Development");
 
             builder.ConfigureServices(services =>
             {
@@ -31,33 +28,32 @@ namespace Smeat.Leader.FunctionalTests.Web
                 // database for testing.
                 services.AddDbContext<ApplicationDbContext>(options =>
                 {
-                    options.UseInMemoryDatabase("Leader");
+                    options.UseInMemoryDatabase("InMemoryDB_Leader");
                     options.UseInternalServiceProvider(provider);
                 });
 
                 services.AddDbContext<AuthDbContext>(options =>
                 {
-                    options.UseInMemoryDatabase("AuthData");
+                    options.UseInMemoryDatabase("InMemoryDB_AuthData");
                     options.UseInternalServiceProvider(provider);
                 });
 
                 // Build the service provider.
                 var sp = services.BuildServiceProvider();
 
-
                 // Create a scope to obtain a reference to the database
                 //context (ApplicationDbContext).
                 using (var scope = sp.CreateScope())
                 {
                     var scopedServices = scope.ServiceProvider;
-                    //var db = scopedServices.GetRequiredService<ApplicationDbContext>();
+                    var db = scopedServices.GetRequiredService<ApplicationDbContext>();
                     var loggerFactory = scopedServices.GetRequiredService<ILoggerFactory>();
 
                     var logger = scopedServices
                         .GetRequiredService<ILogger<WebTestFixture>>();
 
                     // Ensure the database is created.
-                    //db.Database.EnsureCreated();
+                    db.Database.EnsureCreated();
 
                     try
                     {
