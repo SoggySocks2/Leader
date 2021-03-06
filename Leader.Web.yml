@@ -27,30 +27,30 @@ steps:
 
 # Restore dependancies
 - task: DotNetCoreCLI@2
-  displayName: 'Restore project dependencies'
+  displayName: 'Restore dependencies'
   inputs:
     command: 'restore'
     projects: '**/*.csproj'
 
 # Compile
 - script: dotnet build --configuration $(buildConfiguration) --no-restore
-  displayName: 'dotnet build $(buildConfiguration)'
+  displayName: 'Build - $(buildConfiguration)'
 
 # Automated tests - BEGIN
 - task: DotNetCoreCLI@2
-  displayName: Auto Unit Tests
+  displayName: Unit Tests
   inputs:
     command: 'test'
     projects: '**/Leader.UnitTests.csproj'
 
 - task: DotNetCoreCLI@2
-  displayName: Auto Integration Tests
+  displayName: Integration Tests
   inputs:
     command: 'test'
     projects: '**/Leader.IntegrationTests.csproj'
 
 - task: DotNetCoreCLI@2
-  displayName: Auto Functional Tests
+  displayName: Functional Tests
   inputs:
     command: 'test'
     projects: '**/Leader.FunctionalTests.csproj'
@@ -58,7 +58,7 @@ steps:
 
 # Publish - Start
 - task: DotNetCoreCLI@2
-  displayName: 'Publish the project - $(buildConfiguration)'
+  displayName: 'Publish project - $(buildConfiguration)'
   inputs:
     command: 'publish'
     projects: '**/*.csproj'
