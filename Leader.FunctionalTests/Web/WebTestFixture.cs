@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Smeat.Leader.Web;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Smeat.Leader.Infrastructure.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Smeat.Leader.FunctionalTests.Web
 {
@@ -11,30 +13,30 @@ namespace Smeat.Leader.FunctionalTests.Web
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
             //builder.UseEnvironment("Testing");
-            builder.UseEnvironment("Development");
+            //builder.UseEnvironment("Development");
             
             builder.ConfigureServices(services =>
             {
-                //    services.AddEntityFrameworkInMemoryDatabase();
+                services.AddEntityFrameworkInMemoryDatabase();
 
-                //    // Create a new service provider.
-                //    var provider = services
-                //        .AddEntityFrameworkInMemoryDatabase()
-                //        .BuildServiceProvider();
+                // Create a new service provider.
+                var provider = services
+                    .AddEntityFrameworkInMemoryDatabase()
+                    .BuildServiceProvider();
 
-                //    // Add a database context (ApplicationDbContext) using an in-memory 
-                //    // database for testing.
-                //    services.AddDbContext<ApplicationDbContext>(options =>
-                //    {
-                //        options.UseInMemoryDatabase("InMemoryDbForTesting");
-                //        options.UseInternalServiceProvider(provider);
-                //    });
+                // Add a database context (ApplicationDbContext) using an in-memory 
+                // database for testing.
+                services.AddDbContext<ApplicationDbContext>(options =>
+                {
+                    options.UseInMemoryDatabase("InMemoryDbForTesting");
+                    options.UseInternalServiceProvider(provider);
+                });
 
-                //    services.AddDbContext<AuthDbContext>(options =>
-                //    {
-                //        options.UseInMemoryDatabase("Identity");
-                //        options.UseInternalServiceProvider(provider);
-                //    });
+                services.AddDbContext<AuthDbContext>(options =>
+                {
+                    options.UseInMemoryDatabase("Identity");
+                    options.UseInternalServiceProvider(provider);
+                });
 
                 // Build the service provider.
                 var sp = services.BuildServiceProvider();
