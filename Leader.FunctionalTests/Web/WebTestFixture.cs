@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using Smeat.Leader.Infrastructure.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
+using Microsoft.AspNetCore.Identity;
 
 namespace Smeat.Leader.FunctionalTests.Web
 {
@@ -53,17 +54,17 @@ namespace Smeat.Leader.FunctionalTests.Web
                         .GetRequiredService<ILogger<WebTestFixture>>();
 
                     // Ensure the database is created.
-                    //db.Database.EnsureCreated();
+                    db.Database.EnsureCreated();
 
                     try
                     {
-                        //            // Seed the database with test data.
-                        //            //CatalogContextSeed.SeedAsync(db, loggerFactory).Wait();
+                        // Seed the database with test data.
+                        //CatalogContextSeed.SeedAsync(db, loggerFactory).Wait();
 
-                        //            // seed sample user data
-                        //var userManager = scopedServices.GetRequiredService<UserManager<LeaderUser>>();
-                        //var roleManager = scopedServices.GetRequiredService<RoleManager<LeaderRole>>();
-                        //            //AppIdentityDbContextSeed.SeedAsync(userManager, roleManager).Wait();
+                        // seed sample user data
+                        var userManager = scopedServices.GetRequiredService<UserManager<LeaderUser>>();
+                        var roleManager = scopedServices.GetRequiredService<RoleManager<LeaderRole>>();
+                        //AppIdentityDbContextSeed.SeedAsync(userManager, roleManager).Wait();
                     }
                     catch (Exception ex)
                     {
