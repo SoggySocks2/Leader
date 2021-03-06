@@ -12,7 +12,7 @@ namespace Smeat.Leader.FunctionalTests.Web
         {
             //builder.UseEnvironment("Testing");
             builder.UseEnvironment("Development");
-
+            
             builder.ConfigureServices(services =>
             {
                 //    services.AddEntityFrameworkInMemoryDatabase();
@@ -38,12 +38,13 @@ namespace Smeat.Leader.FunctionalTests.Web
 
                 // Build the service provider.
                 var sp = services.BuildServiceProvider();
+                
 
             //    // Create a scope to obtain a reference to the database
             // context (ApplicationDbContext).
             using (var scope = sp.CreateScope())
             {
-                    var scopedServices = scope.ServiceProvider;
+                    var scopedServices = scope.ServiceProvider;                    
                     //        var db = scopedServices.GetRequiredService<ApplicationDbContext>();
                     var loggerFactory = scopedServices.GetRequiredService<ILoggerFactory>();
 
