@@ -54,7 +54,7 @@ namespace Smeat.Leader.FunctionalTests.Web
                         .GetRequiredService<ILogger<WebTestFixture>>();
 
                     // Ensure the database is created.
-                    db.Database.Migrate();
+                    //db.Database.Migrate();
                     //db.Database.EnsureCreated();
 
                     try
