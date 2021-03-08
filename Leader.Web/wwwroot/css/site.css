@@ -81,7 +81,10 @@ legend {
     border-radius: 4px;                                     /* Round the button corners */
     margin-left: auto;                                      /* Align button to the right */
 }
-
+.btn:hover {
+    background-color: var(--theme-bg-color-hover);          /* Change background colour to give highlight effect */
+    cursor: pointer;                                        /* Change cursor to highlight can be clicked */
+}
 .error-summary {
     display: none;                                          /* Hide on smaller screens */
     font-size: 1.25rem;                                     /* Increase the font size */
@@ -100,6 +103,18 @@ legend {
 .error ul {
     list-style: none; /* Remove bullet points */
 }
+
+a {
+    text-decoration: none;              /* Remove underlines */
+}
+a:active {
+    text-decoration: none;              /* Remove underlines */
+}
+
+a:visited {
+    color: inherit;                     /* PRevent visible links changing colour */
+}
+
 
 .footer {
     position: absolute;

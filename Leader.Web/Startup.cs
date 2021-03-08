@@ -70,6 +70,8 @@ namespace Smeat.Leader.Web
                         options.Conventions.AuthorizeFolder("/").AllowAnonymousToPage("/Privacy").AllowAnonymousToPage("/Error");
                         /* Prevent anonymous access to the Identity area, secured folder */
                         options.Conventions.AuthorizeAreaFolder("Identity", "/Secured");
+                        /* Prevent anonymous access to the Contact area folder */
+                        options.Conventions.AuthorizeAreaFolder("Contact", "/");
                         /* Allow anonymous access to the Identity area, account folder */
                         options.Conventions.AllowAnonymousToAreaFolder("Identity", "/Account");
                     }

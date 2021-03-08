@@ -117,10 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Go" xml:space="preserve">
-    <value>Vamos</value>
+  <data name="Contacts" xml:space="preserve">
+    <value>Contactos</value>
+  </data>
+  <data name="Data Quality" xml:space="preserve">
+    <value>Calidad de los datos</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Hogar</value>
   </data>
   <data name="Index" xml:space="preserve">
     <value>Índice</value>
+  </data>
+  <data name="Leads &amp; Opportunities" xml:space="preserve">
+    <value>Clientes potenciales y oportunidades</value>
+  </data>
+  <data name="Marketing" xml:space="preserve">
+    <value>Márketing</value>
+  </data>
+  <data name="Reporting" xml:space="preserve">
+    <value>Reportando</value>
+  </data>
+  <data name="Requests &amp; Complaints" xml:space="preserve">
+    <value>Requests &amp; Complaints</value>
+  </data>
+  <data name="SP Planning" xml:space="preserve">
+    <value>Planificación de SP</value>
   </data>
 </root>

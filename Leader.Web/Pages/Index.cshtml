@@ -7,6 +7,27 @@
     ViewData["Title"] = localizer["Index"];
 }
 
+<style type="text/css">
+
+    .iconSet {
+        display: flex;                      /* Allow control of alignment direction */
+        flex-flow:wrap;                     /* Automatically wrap icons if can't fit on a single row */
+        text-align: center;                 /* Align icons center screen */
+        justify-content: space-around;      /* Add spacing around the icon set */
+    }
+
+    .iconGroup {
+        display: flex;                      /* Enable vertical alignment */
+        flex-direction: column;             /* Vertically align the label beneath the icon */
+        padding: 1rem;                      /* Add some spacing between the icons */
+    }
+
+    .iconGroup:hover {
+        opacity: 0.7;                        
+        border: solid 1px Red;               
+    }
+
+</style>
 <div class="container">
 
     <div class="title">@ViewData["Title"]</div>
@@ -14,9 +35,45 @@
     <span class="message">@ViewData["Message"]</span>
 
     <fieldset>
-        <legend>@localizer["Title"]</legend>
-        Add index content here
+        @*<legend>@localizer["Title"]</legend>*@
+        <div class="iconSet">
+            <div class="iconGroup">
+                <div class="iconImage"><a asp-area="" asp-page="/Index"><img src="~/images/homepage.png" alt="@localizer["Home"]" /></a></div>
+                <div class="iconText">@localizer["Home"]</div>
+            </div>
+            <div class="iconGroup">
+                <a asp-area="Contact" asp-page="/Search">
+                    <div class="iconImage"><img src="~/images/contacts.png" alt="@localizer["Contacts"]" /></div>
+                    <div class="iconText">@localizer["Contacts"]</div>
+                </a>
+            </div>
+            <div class="iconGroup">
+                <div class="iconImage"><img src="~/images/leads-opps.png" alt="@localizer["Leads & Opportunities"]" /></div>
+                <div class="iconText">@localizer["Leads & Opportunities"]</div>
+            </div>
+            <div class="iconGroup">
+                <div class="iconImage"><img src="~/images/marketing.png" alt="@localizer["Marketing"]" /></div>
+                <div class="iconText">@localizer["Marketing"]</div>
+            </div>
+            <div class="iconGroup">
+                <div class="iconImage"><img src="~/images/dataquality.png" alt="@localizer["Data Quality"]" /></div>
+                <div class="iconText">@localizer["Data Quality"]</div>
+            </div>
+            <div class="iconGroup">
+                <div class="iconImage"><img src="~/images/reporting.png" alt="@localizer["Reporting"]" /></div>
+                <div class="iconText">@localizer["Reporting"]</div>
+            </div>
+            <div class="iconGroup">
+                <div class="iconImage"><img src="~/images/icon-complaints.png" alt="@localizer["Requests & Complaints"]" /></div>
+                <div class="iconText">@localizer["Requests & Complaints"]</div>
+            </div>
+            <div class="iconGroup">
+                <div class="iconImage"><img src="~/images/sp-planning.png" alt="@localizer["SP Planning"]" /></div>
+                <div class="iconText">@localizer["SP Planning"]</div>
+            </div>
+        </div>
     </fieldset>
+
 </div>
 
     @section scripts{

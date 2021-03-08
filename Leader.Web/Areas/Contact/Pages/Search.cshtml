@@ -1,0 +1,33 @@
+﻿@page
+@model Smeat.Leader.Web.Areas.Contact.Pages.SearchModel
+
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+
+@{
+    ViewData["Title"] = localizer["Search Contacts"];
+}
+
+<div class="container">
+
+    <div class="title">@ViewData["Title"]</div>
+    <br />
+    <span class="message">@ViewData["Message"]</span>
+
+    <form asp-area="Contact" asp-page="/SearchResults" method="post">
+        <fieldset>
+            <legend>@localizer["Enter search criteria"]</legend>
+            <div asp-validation-summary="All" class="error-summary"></div>
+            <div class="form-group">
+                <label asp-for="Input.Criteria"></label>
+                <input asp-for="Input.Criteria" class="form-control" />
+                <span asp-validation-for="Input.Criteria" class="error"></span>
+            </div>
+            <button type="submit" class="btn">@localizer["Search"]</button>
+        </fieldset>
+    </form>
+
+</div>
+
+@section scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
