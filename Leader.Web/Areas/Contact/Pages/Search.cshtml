@@ -13,18 +13,35 @@
     <br />
     <span class="message">@ViewData["Message"]</span>
 
-    <form asp-area="Contact" asp-page="/SearchResults" method="post">
+    <form asp-area="Contact" asp-page="/Search" method="post">
         <fieldset>
             <legend>@localizer["Enter search criteria"]</legend>
             <div asp-validation-summary="All" class="error-summary"></div>
             <div class="form-group">
                 <label asp-for="Input.Criteria"></label>
-                <input asp-for="Input.Criteria" class="form-control" />
+                <input id="searchCriteria" asp-for="Input.Criteria" class="form-control" />
                 <span asp-validation-for="Input.Criteria" class="error"></span>
             </div>
             <button type="submit" class="btn">@localizer["Search"]</button>
         </fieldset>
     </form>
+
+    <span class="message">@ViewData["No Results"]</span>
+
+
+    <partial name="_pagination" for="Input.PaginationInfo" />
+    
+
+    @{
+        foreach (var c in Model.Input.SearchResults)
+        {
+            <div style="display:flex">
+                <div>@c.Id</div>
+                <div>@c.FirstName</div>
+                <div>@c.LastName</div>
+            </div>
+        }
+    }
 
 </div>
 

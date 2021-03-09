@@ -117,10 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Customer Details" xml:space="preserve">
-    <value>Detalles del cliente</value>
+  <data name="Enter search criteria" xml:space="preserve">
+    <value>Entrez les critères de recherche</value>
   </data>
-  <data name="Save" xml:space="preserve">
-    <value>Salvar</value>
+  <data name="Search" xml:space="preserve">
+    <value>Chercher</value>
+  </data>
+  <data name="Search Contacts" xml:space="preserve">
+    <value>Rechercher des contacts</value>
   </data>
 </root>
