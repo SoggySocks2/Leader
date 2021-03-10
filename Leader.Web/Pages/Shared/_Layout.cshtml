@@ -13,19 +13,21 @@
 </head>
 <body>
 
-        <header role="navigation">
-            <partial name="_NavBarPartial" />
-        </header>
+    <header role="navigation">
+        <partial name="_NavBarPartial" />
+    </header>
 
-        <main role="main" class="container">
-            @RenderBody()
-        </main>
+    <main role="main" class="container">
+        @RenderBody()
+    </main>
 
-        @*<footer class="footer">
-            <a class="navbar-link" href="mailto:peter_jones_glass@hotmail.com?subject=Website Enquiry">
-                &copy; 2021 - @localizer.Get("Powered by") Smeat
-            </a>
-        </footer>*@
+    <br />
+    <br />
+    <footer class="footer">
+        <a class="navbar-link" href="mailto:peter_jones_glass@hotmail.com?subject=Website Enquiry">
+            &copy; 2021 - @localizer.Get("Powered by") Smeat
+        </a>
+    </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     @*<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@

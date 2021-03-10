@@ -15,6 +15,10 @@
     box-sizing: border-box;
 }
 
+html {
+    position: relative;                                     /* Allo footer to be aligned at the bottom of the page */
+    min-height: 100%;                                       /* Ensure the footer it place either at the bottom of the screen or the bottom of the page, whichever is the lower */
+}
 body {
     padding: 0;                                             /* Remove padding */
     margin: 0;                                              /* Remove margins */
