@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
-namespace Smeat.Leader.Infrastructure.Identity
+namespace Smeat.Leader.SharedKernel.Identity
 {
     public class LeaderUser : IdentityUser<long>
     {

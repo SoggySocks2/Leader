@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using Smeat.Leader.Infrastructure.Identity;
+using Smeat.Leader.SharedKernel.Identity;
 
 namespace Smeat.Leader.Web.Areas.Identity.Pages.Account
 {
