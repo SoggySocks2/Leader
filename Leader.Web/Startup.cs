@@ -8,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
-using Smeat.Leader.Infrastructure.Identity;
+using Smeat.Leader.Infrastructure.Data;
 using Smeat.Leader.SharedKernel.Identity;
 using Smeat.Leader.Web.Configuration;
 using Smeat.Leader.Web.Resources;

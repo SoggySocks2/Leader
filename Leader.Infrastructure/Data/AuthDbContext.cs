@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Smeat.Leader.SharedKernel.Identity;
 
-namespace Smeat.Leader.Infrastructure.Identity
+namespace Smeat.Leader.Infrastructure.Data
 {
     public class AuthDbContext : IdentityDbContext<LeaderUser, LeaderRole, long>
     {

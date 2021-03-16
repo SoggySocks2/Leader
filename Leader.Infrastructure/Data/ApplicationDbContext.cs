@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Smeat.Leader.Infrastructure.Identity
+namespace Smeat.Leader.Infrastructure.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

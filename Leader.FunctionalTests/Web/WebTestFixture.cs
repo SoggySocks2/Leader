@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Smeat.Leader.Web;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Smeat.Leader.Infrastructure.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using Microsoft.AspNetCore.Identity;
 using Smeat.Leader.SharedKernel.Identity;
+using Smeat.Leader.Infrastructure.Data;
 
 namespace Smeat.Leader.FunctionalTests.Web
 {
