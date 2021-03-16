@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
-using Smeat.Leader.Infrastructure.Identity;
 using Microsoft.Extensions.Localization;
+using Smeat.Leader.SharedKernel.Identity;
 
 namespace Smeat.Leader.Web.Areas.Identity.Pages.Account
 {

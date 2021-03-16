@@ -7,6 +7,7 @@ using Smeat.Leader.Infrastructure.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using Microsoft.AspNetCore.Identity;
+using Smeat.Leader.SharedKernel.Identity;
 
 namespace Smeat.Leader.FunctionalTests.Web
 {

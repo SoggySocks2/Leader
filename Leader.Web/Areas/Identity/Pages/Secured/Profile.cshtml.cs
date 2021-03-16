@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
-using Smeat.Leader.Infrastructure.Identity;
+using Smeat.Leader.SharedKernel.Identity;
 
 namespace Smeat.Leader.Web.Areas.Identity.Pages.Secured
 {

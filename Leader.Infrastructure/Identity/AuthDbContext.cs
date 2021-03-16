@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Smeat.Leader.SharedKernel.Identity;
 
 namespace Smeat.Leader.Infrastructure.Identity
 {
