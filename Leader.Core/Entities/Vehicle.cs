@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Smeat.Leader.SharedKernel.Base;
+using System;
 
-namespace Smeat.Leader.Core.Entities.CustomerAggregate
+namespace Smeat.Leader.Core.Entities
 {
     public class Vehicle : BaseEntity<Vehicle>
     {

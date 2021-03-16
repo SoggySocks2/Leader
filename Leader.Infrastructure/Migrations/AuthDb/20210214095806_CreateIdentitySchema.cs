@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Smeat.Leader.Infrastructure.Migrations
+namespace Smeat.Leader.Infrastructure.Migrations.AuthDb
 {
     public partial class CreateIdentitySchema : Migration
     {

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Smeat.Leader.Infrastructure.Data;
 
-namespace Smeat.Leader.Infrastructure.Migrations
+namespace Smeat.Leader.Infrastructure.Migrations.AuthDb
 {
     [DbContext(typeof(AuthDbContext))]
     [Migration("20210304134856_ExtendUser")]

@@ -9,7 +9,7 @@ namespace Smeat.Leader.UnitTests.Leader.Core.Customer
         [Fact]
         public void CreateValidCustomer()
         {
-            var customer = new Smeat.Leader.Core.Entities.CustomerAggregate.Customer(dealerId);
+            var customer = new Smeat.Leader.Core.Entities.Customer(dealerId);
             customer.FirstName = "Peter";
 
             Assert.Equal("Peter", customer.FirstName);

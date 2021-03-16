@@ -1,4 +1,4 @@
-﻿namespace Smeat.Leader.Core.Validation.BrokenRules
+﻿namespace Smeat.Leader.SharedKernel.Validation.BrokenRules
 {
     public interface IBrokenRule
     {

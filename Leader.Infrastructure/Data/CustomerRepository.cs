@@ -1,4 +1,4 @@
-﻿using Smeat.Leader.Core.Entities.CustomerAggregate;
+﻿using Smeat.Leader.Core.Entities;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;

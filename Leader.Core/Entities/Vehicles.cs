@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Smeat.Leader.Core.Entities.CustomerAggregate
+namespace Smeat.Leader.Core.Entities
 {
     public class Vehicles : List<Vehicle>
     {

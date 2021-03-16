@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Smeat.Leader.Core.Entities
+namespace Smeat.Leader.SharedKernel.Base
 {
     public abstract class BaseEntity<T>
     {

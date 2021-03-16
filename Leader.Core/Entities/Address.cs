@@ -1,4 +1,6 @@
-﻿namespace Smeat.Leader.Core.Entities.CustomerAggregate
+﻿using Smeat.Leader.SharedKernel.Base;
+
+namespace Smeat.Leader.Core.Entities
 {
     public class Address : BaseEntity<Address>
     {

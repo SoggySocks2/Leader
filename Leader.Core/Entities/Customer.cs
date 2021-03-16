@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Smeat.Leader.SharedKernel.Base;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace Smeat.Leader.Core.Entities.CustomerAggregate
+namespace Smeat.Leader.Core.Entities
 {
     public class Customer : BaseEntity<Customer>
     {

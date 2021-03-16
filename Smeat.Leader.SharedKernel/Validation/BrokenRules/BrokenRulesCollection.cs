@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Smeat.Leader.Core.Validation.BrokenRules
+namespace Smeat.Leader.SharedKernel.Validation.BrokenRules
 {
     public class BrokenRulesCollection : List<IBrokenRule>, IBrokenRulesCollection
     {
