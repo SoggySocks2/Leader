@@ -21,9 +21,9 @@ namespace Smeat.Leader.Core.Entities
             get { return _firstName; }
             set
             {
-                if(_lastName != value)
+                if(_firstName != value)
                 {
-                    _lastName = value;
+                    _firstName = value;
                     MarkDirty();
                 }
             }
