@@ -2,7 +2,7 @@
 
 namespace Smeat.Leader.Core.Entities
 {
-    public class Vehicles : List<Vehicle>
+    public class Customers : List<Customer>
     {
         #region Validation
 
@@ -11,7 +11,7 @@ namespace Smeat.Leader.Core.Entities
         /// </summary>
         public bool IsValid()
         {
-            foreach(var item in this)
+            foreach (var item in this)
             {
                 if (!item.IsValid()) return false;
             }

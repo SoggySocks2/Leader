@@ -9,6 +9,7 @@ namespace Smeat.Leader.Infrastructure.Data
             : base(options)
         {
         }
+        public DbSet<Core.Entities.Group> Groups { get; set; }
         public DbSet<Core.Entities.Customer> Customers { get; set; }
         DbSet<Core.Entities.Vehicle> Vehicles { get; set; }
         DbSet<Core.Entities.Address> Addresses { get; set; }

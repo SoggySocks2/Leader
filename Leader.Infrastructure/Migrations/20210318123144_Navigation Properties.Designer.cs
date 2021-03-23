@@ -4,13 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Smeat.Leader.Infrastructure.Data;
 
-namespace Smeat.Leader.Infrastructure.Migrations.ApplicationDb
+namespace Smeat.Leader.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210304132623_AddCustomer")]
-    partial class AddCustomer
+    [Migration("20210318123144_Navigation Properties")]
+    partial class NavigationProperties
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -216,7 +217,7 @@ namespace Smeat.Leader.Infrastructure.Migrations.ApplicationDb
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Smeat.Leader.Core.Entities.CustomerAggregate.Address", b =>
+            modelBuilder.Entity("Smeat.Leader.Core.Entities.Address", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -224,45 +225,55 @@ namespace Smeat.Leader.Infrastructure.Migrations.ApplicationDb
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("County")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<long>("CustomerId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Line1")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("Line2")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("PostCode")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("Region")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("Town")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Address");
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("Addresses");
                 });
 
-            modelBuilder.Entity("Smeat.Leader.Core.Entities.CustomerAggregate.Customer", b =>
+            modelBuilder.Entity("Smeat.Leader.Core.Entities.Customer", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<long?>("AddressId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("DealerId")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<long>("GroupId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -271,29 +282,50 @@ namespace Smeat.Leader.Infrastructure.Migrations.ApplicationDb
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AddressId");
+                    b.HasIndex("GroupId");
 
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("Smeat.Leader.Core.Entities.CustomerAggregate.Vehicle", b =>
+            modelBuilder.Entity("Smeat.Leader.Core.Entities.Group", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<long?>("CustomerId")
+                    b.Property<string>("GroupName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Groups");
+                });
+
+            modelBuilder.Entity("Smeat.Leader.Core.Entities.Vehicle", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long>("CustomerId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Make")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
 
                     b.Property<string>("Model")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
 
                     b.Property<string>("VRM")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
 
                     b.Property<int?>("Year")
                         .HasColumnType("int");
@@ -356,25 +388,49 @@ namespace Smeat.Leader.Infrastructure.Migrations.ApplicationDb
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Smeat.Leader.Core.Entities.CustomerAggregate.Customer", b =>
+            modelBuilder.Entity("Smeat.Leader.Core.Entities.Address", b =>
                 {
-                    b.HasOne("Smeat.Leader.Core.Entities.CustomerAggregate.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId");
+                    b.HasOne("Smeat.Leader.Core.Entities.Customer", "Customer")
+                        .WithMany("Addresses")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Address");
+                    b.Navigation("Customer");
                 });
 
-            modelBuilder.Entity("Smeat.Leader.Core.Entities.CustomerAggregate.Vehicle", b =>
+            modelBuilder.Entity("Smeat.Leader.Core.Entities.Customer", b =>
                 {
-                    b.HasOne("Smeat.Leader.Core.Entities.CustomerAggregate.Customer", null)
+                    b.HasOne("Smeat.Leader.Core.Entities.Group", "Group")
+                        .WithMany("Customers")
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Group");
+                });
+
+            modelBuilder.Entity("Smeat.Leader.Core.Entities.Vehicle", b =>
+                {
+                    b.HasOne("Smeat.Leader.Core.Entities.Customer", "Customer")
                         .WithMany("Vehicles")
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
                 });
 
-            modelBuilder.Entity("Smeat.Leader.Core.Entities.CustomerAggregate.Customer", b =>
+            modelBuilder.Entity("Smeat.Leader.Core.Entities.Customer", b =>
                 {
+                    b.Navigation("Addresses");
+
                     b.Navigation("Vehicles");
+                });
+
+            modelBuilder.Entity("Smeat.Leader.Core.Entities.Group", b =>
+                {
+                    b.Navigation("Customers");
                 });
 #pragma warning restore 612, 618
         }

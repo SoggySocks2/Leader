@@ -26,13 +26,13 @@ namespace Smeat.Leader.Web.Areas.Contact.Pages
             [Display(Name = "Criteria")]
             public string Criteria { get; set; }
 
-            public List<SearchResultViewModel> SearchResults = new List<SearchResultViewModel>();
+            public List<CustomerSearchResultDTO> SearchResults = new List<CustomerSearchResultDTO>();
 
 
             public Web.Pages.Shared._PaginationModel PaginationInfo { get; set; } = new Web.Pages.Shared._PaginationModel(0, 0, 1);
         }
 
-        public class SearchResultViewModel
+        public class CustomerSearchResultDTO
         {
             public long Id { get; internal set; }
             public string FirstName { get; internal set; }
@@ -59,7 +59,7 @@ namespace Smeat.Leader.Web.Areas.Contact.Pages
 
             foreach (var customer in customers)
             {
-                Input.SearchResults.Add(new SearchResultViewModel { Id = customer.Id, FirstName = customer.FirstName, LastName = customer.LastName });
+                Input.SearchResults.Add(new CustomerSearchResultDTO { Id = customer.Id, FirstName = customer.FirstName, LastName = customer.LastName });
             }
 
             if (customers.Count == 0)
